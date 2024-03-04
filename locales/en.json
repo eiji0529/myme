@@ -1,0 +1,171 @@
+{
+  "general": {
+    "404": {
+      "title": "404 Not found",
+      "subtext_html": "The page you were looking for does not exist",
+      "return_top": "Return to Top Page"
+    },
+    "search": {
+      "search": "Search by keyword",
+      "reset": "Clear search term"
+    },
+    "limit": {
+      "add_limit": "You can't add any more."
+    },
+    "move": {
+      "back": "return"
+    },
+    "overseas_notice": {
+      "title": "Overseas Shipping Notice",
+      "content": "Customers are responsible for any customs duties and fees incurred by international shipments. Please be aware that you may be required to pay customs duties at the time of shipment."
+    }
+  },
+  "localization": {
+    "country_label": "Country\/region",
+    "language_label": "Language",
+    "update_language": "Update language",
+    "update_country": "Update country\/region"
+  },
+  "product": {
+    "detail": {
+      "title": "item name",
+      "price": "price",
+      "size": "size",
+      "color": "color",
+      "qty": "qty",
+      "total": "total amount",
+      "buy-btn": "Add to Cart",
+      "buynow-btn": "Buy It Now",
+      "select-notice": "Please choose",
+      "added_cart": "Added to cart",
+      "added_error": "Could not add",
+      "go_cart": "view your cart"
+    },
+    "description": {
+      "details": "DETAILS",
+      "sizeguide": "SIZE GUIDE"
+    },
+    "before_release": {
+      "buy-btn": "Before release product"
+    },
+    "remain": {
+      "remain": "only",
+      "piece": "left"
+    }
+  },
+  "for_js": {
+    "out_of_stock": "Out of stock"
+  },
+  "search": {
+    "no_result": "No result",
+    "re_search": "Search again"
+  },
+  "footer": {
+    "company-name": "Old Works Frontier co.,ltd"
+  },
+  "cart": {
+    "item-detail": "item detail",
+    "option": "option",
+    "price": "price",
+    "total_price": "Total amount",
+    "subtotal": "subtotal",
+    "tax_display": "Tax amount will be displayed on the checkout page",
+    "shipping": "shipping charges",
+    "shipping_display": "Displayed on the checkout page",
+    "checkout": "checkout",
+    "empty": "Cart is empty",
+    "continue": "Continue Shopping"
+  },
+  "news": {
+    "past_title": "List of Past News",
+    "to_detail": "To details",
+    "prev": "prev",
+    "next": "next",
+    "recent": "Recent News"
+  },
+  "customers": {
+    "login": {
+      "forgot": "Forgot Your Password?",
+      "create": "Create Account",
+      "login": "Sign In",
+      "forgotpassword": "Submit",
+      "return": "Return to login page"
+    },
+    "register": {
+      "lastname": "Last name",
+      "firstname": "First name",
+      "email": "E-mail address",
+      "password": "password",
+      "password_confirm": "Password Confirmation",
+      "register": "Sign up",
+      "reset": "Reset Password"
+    },
+    "myaccount": {
+      "title": "My Account",
+      "edit_address": "Edit Address",
+      "shipping_title": "Shipping Address",
+      "myname": "Name",
+      "mypost": "Zip",
+      "myaddress": "Address",
+      "history": "Order history"
+    },
+    "address": {
+      "address_title": "Addresses",
+      "new_address": "Add a new address",
+      "last_name": "Last name(required)",
+      "first_name": "First name(required)",
+      "country": "Country\/region(required)",
+      "zipcode": "Postal\/ZIP code",
+      "province": "Province",
+      "city": "City",
+      "address": "Address line 1(required)",
+      "buildings": "Address line 2",
+      "phone": "Phone",
+      "company": "Company",
+      "default_check": "Set as default address",
+      "default_title": "By Default",
+      "others_title": "Other address",
+      "add": "Add",
+      "edit": "Edit",
+      "update": "Update",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "required_text": "Required fields are not filled in."
+    },
+    "account": {
+      "no_order": "You haven't placed any orders yet.",
+      "to_detail": "Detail",
+      "date": "Order date",
+      "number": "Order number",
+      "financial": "Payment status",
+      "fulfillment": "Shipping status",
+      "amount": "Total amount"
+    },
+    "order": {
+      "title": "Order History Details",
+      "number": "Order number",
+      "date": "Order date",
+      "name": "item name",
+      "price": "price",
+      "qty": "quantity",
+      "line_amount": "amount",
+      "subtotal": "sub total",
+      "shipping": "shipping charges",
+      "tax": "tax",
+      "total": "total amount",
+      "billing_address": "billing address",
+      "payment_status": "Settlement Status",
+      "shipping_address": "Shipping Address",
+      "fulfillment_status": "Shipping Status"
+    }
+  },
+  "pages": {
+    "contact": {
+      "name": "Name",
+      "email": "E-mail",
+      "message": "Details",
+      "send": "Send",
+      "sended_html": "Thank you for your contact.<br>We will check the contents of your inquiry and a representative will contact you shortly."
+    }
+  }
+}
