@@ -1,0 +1,463 @@
+
+
+/* マイアカウント */
+.myac-title {
+    display: flex;
+    color: var(--white);
+    margin-top: 60px;
+    margin-bottom: 20px;
+    p {
+        margin: auto;
+        font-size: large;
+    }
+}
+
+.myac-main,
+.add-main {
+@media screen and (min-width:901px) {
+    width: 80%;
+}
+@media screen and (max-width:900px) {
+    width: 90%;
+}
+    margin: auto;
+    margin-bottom: 120px;
+    color: var(--white);
+}
+.myac-section {
+    border-top: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+    @media screen and (min-width:901px) {
+        > div {
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+    }
+    @media screen and (max-width:900px) {
+        > div {
+            margin-left: 1em;
+            margin-right: 1em;
+    }
+}
+}
+.address-list {
+    @media screen and (min-width:901px) {
+        margin-left: 2em;
+        tr {
+            th {
+                text-align: right;
+                font-weight: normal;
+            }
+            td {
+                padding-left: 2em;
+            }
+        }
+    }
+    @media screen and (max-width:900px) {
+        margin-left: 1em;
+        tr {
+            th {
+                text-align: right;
+                font-weight: normal;
+            }
+            td {
+                padding-left: 1em;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:901px) {
+    .edit-address {
+        margin: 0.5em auto 40px 4em;
+    }
+}
+@media screen and (max-width:900px) {
+    .edit-address {
+        margin: 2em auto;
+        text-align: center;
+        span {
+            padding: 0.6em 1.1em;
+        }
+    }
+}
+
+
+/* 注文履歴 */
+@media screen and (min-width:901px) {
+    .myac-history {
+        margin-top: 40px;
+        margin-left: 2em;
+    }
+}
+@media screen and (max-width:900px) {
+    .myac-history {
+        margin-top: 80px;
+        margin-left: 1em;
+    }
+}
+
+
+
+/* 配送先住所追加  padding: 30px 7%; */
+.new-address {
+    text-align: center;
+}
+
+@media screen and (min-width:901px) {
+    .new-add-form {
+        display: none;
+        width: 30%;
+        min-width: 200px;
+        padding: 20px 7%;
+        margin: auto;
+        background-color: var(--dark-gray);
+        border-radius: 10px;
+        border: 3px solid var(--pink);
+        color: var(--white);
+    }
+}
+@media screen and (max-width:900px) {
+    .new-add-form {
+        display: none;
+        width: 70svw;
+        padding: 20px;
+        margin: auto;
+        background-color: var(--dark-gray);
+        border-radius: 10px;
+        border: 3px solid var(--pink);
+        color: var(--white);
+    }
+}
+.select-country,
+.select-province {
+    color: var(--white);
+    margin-top: 0.6em;
+    select {
+        display: block;
+        width: 100%;
+    }
+}
+.set-default {
+    margin-top: 0.8em;
+    input,
+    label {
+        cursor: pointer;
+    }
+    label {
+        user-select: none;
+    }
+}
+.set-btn {
+    margin-top: 0.8em;
+    display: flex;
+    justify-content: space-between;
+    @media screen and (min-width:901px) {
+        button {
+            width: 45%;
+            height: 2.5em;
+            border-color: var(--white);
+            font-weight: bold;
+        }
+    }
+    @media screen and (max-width:900px) {
+        button {
+            width: 47%;
+            height: 3.5em;
+            border-color: var(--white);
+            font-weight: bold;
+        }
+    }
+}
+.cancel-btn {
+    background: transparent;
+    color: var(--white);
+    text-shadow: none;
+}
+
+/* 注文履歴 */
+.myac-ordered {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0.6em 0;
+    border-top: 1px solid var(--white);
+    border-bottom: 1px solid var(--white);
+}
+.myac-order-date {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px dashed var(--white);
+}
+.myac-order-date div:first-child {
+    margin-right: 1.5em;
+}
+.ord-detail a {
+    padding: 3px 10px;
+    background: var(--pink);
+    border-radius: 1em;
+    border: 1px solid var(--dark-gray);
+    color: var(--dark-gray);
+}
+@media screen and (min-width:901px) {
+    .myac-order-detail {
+        display: flex;
+        justify-content: space-between;
+        .ord-detail {
+            width: 15%;
+            display: flex;
+            div {
+                margin: auto;
+            }
+        }
+        .ord-num,
+        .ord-pay,
+        .ord-fulfill {
+            width: 20%;
+        }
+        .ord-amount {
+            width: 25%;
+        }
+    }
+}
+@media screen and (max-width:900px) {
+    .myac-order-detail {
+        > div {
+            display: flex;
+            margin-left: 0.8em;
+            margin-top: 0.3em;
+        }
+        > div:nth-child(n+2) > div:first-child {
+            width: 50%;
+        }
+        .ord-detail {
+            margin: 1em auto;
+            > div {
+                margin: auto;
+                a {
+                    padding: 0.3em 1.1em;
+                }
+            }
+        }
+        
+    }
+}
+.no-order {
+    margin-left: 1em;
+}
+
+
+/* 住所更新 */
+.addresses {
+    @media screen and (min-width:901px) {
+        margin: 40px auto;
+        padding: 20px 7%;
+        width: 35svw;
+    }
+    @media screen and (max-width:900px) {
+        width: 70svw;
+        margin: auto;
+        padding: 20px;
+    }
+    display: none;
+    background-color: var(--dark-gray);
+    border-radius: 10px;
+    border: 3px solid var(--pink);
+    .input-group {
+        input {
+            padding: 5px 8px;
+        }
+    }
+}
+.name-flex {
+    display: flex;
+    justify-content: space-between;
+    > div {
+        width: 48%;
+    }
+}
+
+.disp-address {
+    margin: auto;
+    text-align: center;
+}
+
+
+/* ボタンデザイン */
+.add-new-btn,
+.edit-btn,
+.del-btn {
+    cursor: pointer;
+    padding: 7px 16px;
+    border: 2px solid var(--white);
+    border-radius: 5px;
+    font-size: var(--base-font-size);
+}
+.add-new-btn {
+    background-color: var(--blue);
+}
+.edit-btn {
+    margin-right: 10px;
+    background-color: var(--pink);
+}
+.del-btn {
+    background: transparent;
+    color: var(--white);
+}
+
+
+/* インプットボックスデザイン */
+.input-group {
+    position: relative;
+    margin-top: 1.5em;
+}
+.input-group input {
+    width: 100%;
+    transition: 0.2s;
+    border: 3px solid transparent;
+    background: transparent;
+    outline: 1px solid var(--white);
+    padding: 8px 8px;
+    box-sizing: border-box;
+    margin: 2px;
+    color: var(--white);
+}
+.input-group input:focus {
+    border-image: linear-gradient(to right, var(--blue), var(--pink));
+    border-image-slice: 1;
+    outline: 1px solid transparent;
+}
+.input-group input::placeholder {
+    color: transparent;
+}
+.input-group label {
+    position: absolute;
+    top: -20px;
+    display: block;
+    transition: 0.2s;
+    pointer-events: none;
+    font-size: 0.7em;
+    color: var(--white);
+    padding-left: 8px;
+}
+.input-group {
+    input:placeholder-shown ~ label {
+        color: #ccc;
+        font-size: 0.9em;
+        top: 8px;
+    }
+    input:placeholder-shown ~ label.req {
+        color: rgb(255, 50, 50);
+    }
+    input:focus ~ label {
+        top: -20px;
+        font-size: 0.7em;
+        color: var(--blue);
+    }
+}
+.select-country .req {
+    color: rgb(255, 50, 50);
+}
+
+/* 入力必須項目エラー */
+.required_text {
+    display: none;
+    color: rgb(255, 50, 50);
+}
+
+.myac-link {
+    color: var(--dark-gray);
+    font-weight: bold;
+    padding: 3px 10px;
+}
+
+
+/* 注文履歴詳細 */
+.order-number,
+.order-date {
+    display: flex;
+}
+.order-date {
+    margin-bottom: 6px;
+}
+.order-detail-area {
+    margin-bottom: 30px;
+}
+.order-items {
+    width: 100%;
+    border: 1px solid var(--white);
+    padding: 5px 10px;
+    tr td {
+        text-align: right;
+    }
+    tr td:first-child {
+        text-align: left;
+    }
+    thead td {
+        border-bottom: 1px dashed var(--white);
+    }
+    tbody {
+        line-height: 1.8em;
+    }
+    .order-item {
+        margin: 1.4em 0;
+        > div {
+            display: flex;
+            margin: 0.2em 0;
+            > div:first-child {
+                width: 40%;
+            }
+        }
+    }
+}
+.total-list {
+    padding: 5px 10px;
+    border: 1px solid var(--white);
+    border-top: none;
+    > div {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+@media screen and (min-width:901px) {
+    .order-sp {
+        display: none;
+    }
+}
+@media screen and (max-width:900px) {
+    .order-pc {
+        display: none;
+    }
+    .order-items {
+        width: initial;
+    }
+}
+
+@media screen and (min-width:901px) {
+    .myac-addresses {
+        display: flex;
+        justify-content: center;
+        .billings,
+        .shippings {
+            width: 30%;
+        }
+        form {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+.address-title,
+.statuses {
+    font-size: var(--head-font-size);
+}
+@media screen and (max-width:900px) {
+    .myac-addresses {
+        .billings,
+        .shippings {
+            margin: 2em 0;
+            p:nth-child(3) {
+                margin-left: 1em;
+            }
+        }
+    }
+}

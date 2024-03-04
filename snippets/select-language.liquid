@@ -1,0 +1,26 @@
+
+
+{%- form 'localization', id: 'SelectLanguageForm', class: 'localization-form' -%}
+    <input id="lang-val" type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+    <div id="lang-btn">
+        {% if localization.language.iso_code == "ja" %}
+            <span>JP</span>
+        {% elsif localization.language.iso_code == "en" %}
+            <span>EN</span>
+        {% elsif localization.language.iso_code == "zh-CN" %}
+            <span>CN</span>
+        {% endif %}
+        <div class="lang-selecter">
+            {% for iso in localization.available_languages %}
+                {% if iso.iso_code == "ja" %}
+                    <button type="button" onclick="language_selecter('ja')">JP</button>
+                {% elsif iso.iso_code == "en" %}
+                    <button  type="button" onclick="language_selecter('en')">EN</button>
+                {% elsif iso.iso_code == "zh-CN" %}
+                    <button  type="button" onclick="language_selecter('zh-CN')">CN</button>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{%- endform -%}
+

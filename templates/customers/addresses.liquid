@@ -1,0 +1,240 @@
+
+
+{{ 'css_myaccount.css' | asset_url | stylesheet_tag }}
+
+<div class="myac-title">
+    <p>{{ 'customers.address.address_title' | t }}</p>
+</div>
+
+<div class="new-address">
+    <button type="button" class="add-new-btn" onclick="open_newform()">{{ 'customers.address.new_address' | t }}</button>
+</div>
+
+<div class="new-add-form">
+    {% form 'customer_address', customer.new_address %}
+    {{ form.errors | default_errors }}
+    <div class="input-group">
+        <input type="text" name="address[last_name]" placeholder="{{ 'customers.address.last_name' | t }}">
+        <label>{{ 'customers.address.last_name' | t }}</label>
+    </div>
+    <div class="input-group">
+        <input type="text" name="address[first_name]" placeholder="{{ 'customers.address.first_name' | t }}">
+        <label>{{ 'customers.address.first_name' | t }}</label>
+    </div>
+    <div class="select-country">
+        <label>{{ 'customers.address.country' | t }}</label>
+        <select name="address[country]" class="country-list" data-default="" autocomplete="country">
+            {{ country_option_tags }}
+        </select>
+    </div>
+    <div class="input-group">
+        <input type="text" name="address[zip]" placeholder="{{ 'customers.address.zipcode' | t }}">
+        <label>{{ 'customers.address.zipcode' | t }}</label>
+    </div>
+    <div class="select-province">
+        <label>{{ 'customers.address.province' | t }}</label>
+        <select name="address[province]" class="province-list">
+        </select>
+    </div>
+    <div class="input-group">
+        <input type="text" name="address[city]" placeholder="{{ 'customers.address.city' | t }}">
+        <label>{{ 'customers.address.city' | t }}</label>
+    </div>
+    <div class="input-group">
+        <input type="text" name="address[address1]" placeholder="{{ 'customers.address.address' | t }}">
+        <label>{{ 'customers.address.address' | t }}</label>
+    </div>
+    <div class="input-group">
+        <input type="text" name="address[address2]" placeholder="{{ 'customers.address.buildings' | t }}">
+        <label>{{ 'customers.address.buildings' | t }}</label>
+    </div>
+    <div class="input-group">
+        <input type="tell" name="address[phone]" placeholder="{{ 'customers.address.phone' | t }}">
+        <label>{{ 'customers.address.phone' | t }}</label>
+    </div>
+    {% comment %}
+    <div class="input-group">
+        <input type="text" name="address[company]" placeholder="{{ 'customers.address.company' | t }}">
+        <label>{{ 'customers.address.company' | t }}</label>
+    </div>
+    {% endcomment %}
+
+    <div class="set-default">
+        <input type="checkbox" id="add-default" name="address[default]" value="1">
+        <label for="add-default">{{ 'customers.address.default_check' | t }}</label>
+    </div>
+    <div class="set-btn">
+        <button class="submit-btn add-confirm">{{ 'customers.address.add' | t }}</button>
+        <button class="submit-btn cancel-btn" type="reset" onclick="close_newform()">{{ 'customers.address.cancel' | t }}</button>
+    </div>
+    <div class="required_text">{{ 'customers.address.required_text' | t }}</div>
+    {% endform %}
+</div>
+
+<div class="add-main">
+    <div class="myac-title">
+        <p>{{ 'customers.address.default_title' | t }}</p>
+    </div>
+    {% assign def_add = customer.default_address %}
+
+    <div class="myac-addresses">
+        <div class="disp-address">
+            <div class="simple-address">
+                {{ def_add | format_address }}
+            </div>
+            <form method="post" action="/account/addresses/{{ def_add.id }}">
+                <button type="button" class="edit-btn" onclick="open_edit(this)">{{ 'customers.address.edit' | t }}</button>
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="del-btn">{{ 'customers.address.delete' | t }}</button>
+            </form>
+        </div>
+        {% form 'customer_address', def_add %}
+            <div class="addresses">
+                <div class="name-flex">
+                    <div class="input-group">
+                        <input type="text" name="address[last_name]" placeholder="{{ 'customers.address.last_name' | t }}" value="{{ def_add.last_name }}">
+                        <label>{{ 'customers.address.last_name' | t }}</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="address[first_name]" placeholder="{{ 'customers.address.first_name' | t }}" value="{{ def_add.first_name }}">
+                        <label>{{ 'customers.address.first_name' | t }}</label>
+                    </div>
+                </div>
+                <div class="select-country">
+                    <label>{{ 'customers.address.country' | t }}</label>
+                    <select name="address[country]" class="country-list" data-default="{{ def_add.country }}" autocomplete="country">
+                        {{ country_option_tags }}
+                    </select>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="address[zip]" placeholder="{{ 'customers.address.zipcode' | t }}" value="{{ def_add.zip }}">
+                    <label>{{ 'customers.address.zipcode' | t }}</label>
+                </div>
+                <div class="select-province">
+                    <label>{{ 'customers.address.province' | t }}</label>
+                    <select name="address[province]" class="province-list" data-default="{{ def_add.province }}">
+                    </select>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="address[city]" placeholder="{{ 'customers.address.city' | t }}" value="{{ def_add.city }}">
+                    <label>{{ 'customers.address.city' | t }}</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="address[address1]" placeholder="{{ 'customers.address.address' | t }}" value="{{ def_add.address1 }}">
+                    <label>{{ 'customers.address.address' | t }}</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="address[address2]" placeholder="{{ 'customers.address.buildings' | t }}" value="{{ def_add.address2 }}">
+                    <label>{{ 'customers.address.buildings' | t }}</label>
+                </div>
+                <div class="input-group">
+                    <input type="tell" name="address[phone]" placeholder="{{ 'customers.address.phone' | t }}" value="{{ def_add.phone }}">
+                    <label>{{ 'customers.address.phone' | t }}</label>
+                </div>
+                {% comment %}
+                <div class="input-group">
+                    <input type="text" name="address[company]" placeholder="{{ 'customers.address.company' | t }}" value="{{ def_add.company }}">
+                    <label>{{ 'customers.address.company' | t }}</label>
+                </div>
+                {% endcomment %}
+        
+                <div class="set-default">
+                    <input type="checkbox" id="add-default{{ def_add.id }}" name="address[default]" value="1" checked>
+                    <label for="add-default{{ def_add.id }}">{{ 'customers.address.default_check' | t }}</label>
+                </div>
+                <div class="set-btn">
+                    <button class="submit-btn add-confirm">{{ 'customers.address.update' | t }}</button>
+                    <button class="submit-btn cancel-btn" type="button" onclick="close_edit(this)">{{ 'customers.address.cancel' | t }}</button>
+                </div>
+                <div class="required_text">{{ 'customers.address.required_text' | t }}</div>
+            </div>
+        {% endform %}
+    </div>
+
+    
+    <div class="myac-title">
+        <p>{{ 'customers.address.others_title' | t }}</p>
+    </div>
+    {% for address in customer.addresses %}
+        {% if address.id != customer.default_address.id %}
+            <div class="myac-addresses">
+                <div class="disp-address">
+                    <div class="simple-address">
+                        {{ address | format_address }}
+                    </div>
+                    <form method="post" action="/account/addresses/{{ address.id }}">
+                        <button type="button" class="edit-btn" onclick="open_edit(this)">{{ 'customers.address.edit' | t }}</button>
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit" class="del-btn">{{ 'customers.address.delete' | t }}</button>
+                    </form>
+                </div>
+                {% form 'customer_address', address %}
+                    <div class="addresses">
+                        <div class="name-flex">
+                            <div class="input-group">
+                                <input type="text" name="address[last_name]" placeholder="{{ 'customers.address.last_name' | t }}" value="{{ address.last_name }}">
+                                <label>{{ 'customers.address.last_name' | t }}</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" name="address[first_name]" placeholder="{{ 'customers.address.first_name' | t }}" value="{{ address.first_name }}">
+                                <label>{{ 'customers.address.first_name' | t }}</label>
+                            </div>
+                        </div>
+                        <div class="select-country">
+                            <label>{{ 'customers.address.country' | t }}</label>
+                            <select name="address[country]" class="country-list" data-default="{{ address.country }}" autocomplete="country">
+                                {{ country_option_tags }}
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="address[zip]" placeholder="{{ 'customers.address.zipcode' | t }}" value="{{ address.zip }}">
+                            <label>{{ 'customers.address.zipcode' | t }}</label>
+                        </div>
+                        <div class="select-province">
+                            <label>{{ 'customers.address.province' | t }}</label>
+                            <select name="address[province]" class="province-list" data-default="{{ address.province }}">
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="address[city]" placeholder="{{ 'customers.address.city' | t }}" value="{{ address.city }}">
+                            <label>{{ 'customers.address.city' | t }}</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="address[address1]" placeholder="{{ 'customers.address.address' | t }}" value="{{ address.address1 }}">
+                            <label>{{ 'customers.address.address' | t }}</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="address[address2]" placeholder="{{ 'customers.address.buildings' | t }}" value="{{ address.address2 }}">
+                            <label>{{ 'customers.address.buildings' | t }}</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="tell" name="address[phone]" placeholder="{{ 'customers.address.phone' | t }}" value="{{ address.phone }}">
+                            <label>{{ 'customers.address.phone' | t }}</label>
+                        </div>
+                        {% comment %}
+                        <div class="input-group">
+                            <input type="text" name="address[company]" placeholder="{{ 'customers.address.company' | t }}" value="{{ address.company }}">
+                            <label>{{ 'customers.address.company' | t }}</label>
+                        </div>
+                        {% endcomment %}
+                
+                        <div class="set-default">
+                            <input type="checkbox" id="add-default{{ address.id }}" name="address[default]" value="1">
+                            <label for="add-default{{ address.id }}">{{ 'customers.address.default_check' | t }}</label>
+                        </div>
+                        <div class="set-btn">
+                            <button class="submit-btn add-confirm">{{ 'customers.address.update' | t }}</button>
+                            <button class="submit-btn cancel-btn" type="button" onclick="close_edit(this)">{{ 'customers.address.cancel' | t }}</button>
+                        </div>
+                        <div class="required_text">{{ 'customers.address.required_text' | t }}</div>
+                    </div>
+                {% endform %}
+            </div>
+        {% else %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+{{ 'address.js' | asset_url | script_tag }}
+

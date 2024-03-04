@@ -1,0 +1,20 @@
+
+
+<div class="qty-select">
+    <button type="button" id="qty-minus" class="qty-minus"><span></span></button>
+    <input 
+        id="quantity" 
+        class="quantity" 
+        type="number" 
+        name="quantity" 
+        data-min="1" 
+        min="1" 
+        data-max="" 
+        max="{% if item.variant.inventory_quantity %}{{ item.variant.inventory_quantity }}{% else%}{% endif %}" 
+        step="1" 
+        value="{% if item.quantity %}{{ item.quantity }}{% else%}1{% endif %}" 
+    />
+    <div class="remain_notice re_balloon">残り<span class="remain_stock">〇</span>個</div>
+    <button type="button" id="qty-plus" class="qty-plus"><span></span></button>
+</div>
+

@@ -1,0 +1,90 @@
+
+
+/* お問い合わせページ */
+@media screen and (min-width:901px) {
+    .contact-area {
+        width: 30%;
+    }
+}
+@media screen and (max-width:900px) {
+    .contact-area {
+        width: 90%;
+    }
+}
+.contact-area {
+    color: var(--white);
+    line-height: 1.8em;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 40px;
+}
+.send-btn {
+    width: 50%;
+    margin: auto;
+}
+
+
+/* インプットボックスデザイン */
+.input-group {
+    position: relative;
+    margin-top: 2.3em;
+    margin-bottom: 1.2em;
+}
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    transition: 0.2s;
+    color: var(--white);
+    font-size: var(--base-font-size);
+    padding: 0.4em 0.8em 0.4em 0.6em;
+    border: 1px solid var(--white);
+    background: var(--dark-gray);
+    outline: 0;
+    box-sizing: border-box;
+}
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: transparent;
+}
+.input-group label {
+    position: absolute;
+    top: -20px;
+    display: block;
+    transition: 0.2s;
+    pointer-events: none;
+    font-size: 0.7em;
+    color: #aaa;
+    padding-left: 0.6em;
+}
+.input-group {
+    input:placeholder-shown,
+    textarea:placeholder-shown {
+        background: transparent;
+    }
+    input:placeholder-shown ~ label,
+    textarea:placeholder-shown ~ label {
+        color: #aaa;
+        font-size: 0.9em;
+        top: 0;
+        padding-left: 0.6em;
+    }
+    input:focus ~ label,
+    textarea:focus ~ label {
+        top: -20px;
+        font-size: 0.7em;
+        color: var(--blue);
+    }
+}
+.input-group input:focus,
+.input-group textarea:focus {
+    border-width: 3px;
+    border-image: linear-gradient(to right, var(--blue), var(--pink));
+    border-image-slice: 1;
+    background: var(--dark-gray);
+}
+
+/* トップページへ戻るボタン */
+.return-link {
+    color: #000;
+    margin-top: 30px;
+}

@@ -1,0 +1,41 @@
+
+
+{{ 'css_item-list.css' | asset_url | stylesheet_tag }}
+
+
+{% paginate collections by 32 %}
+
+{% render 'paginate' paginate:paginate %}
+
+
+    <ul class="item-list">
+    {% for collection in collections %}
+        {% for item in collection.products %}
+            <!--show product details here -->
+            <li class="item-base delighter" data-delighter>
+                <div class="item-img">
+                    <a href="{{ item.url }}">
+                        <img class="lazyload" data-original="{{ item.featured_image | product_img_url: 'large' }}">
+                    </a>
+                </div>
+                <a class="item-explain" href="{{ item.url }}">
+                    <p>{{ item.title }}</p>
+                    <p>
+                        {{ item.price | money }}
+                        {% if item.compare_at_price > item.price %}
+                            <span class="origin-price">{{ item.compare_at_price | money }}</span>
+                        {% endif %}
+                    </p>
+                </a>
+            </li>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+
+
+{% render 'paginate' paginate:paginate %}
+
+{% endpaginate %}
+
+
+

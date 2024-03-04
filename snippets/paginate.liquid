@@ -1,0 +1,24 @@
+
+{%- if paginate.pages > 1 -%}
+    <div class="paginate">
+        <a href="{{ paginate.previous.url }}" class="page-arrow"><</a>
+        {% for page in paginate.parts %}
+            <div class="pages">
+                {% if paginate.current_page == page.title %}
+                    <div>{{ page.title }}</div>
+                {% elsif forloop.first %}
+                    <a href="{{ page.url }}">{{ page.title }}</a>
+                {% elsif forloop.last %}
+                    <a href="{{ page.url }}">{{ page.title }}</a>
+                {% else %}
+                    {% if page.is_link %}
+                    <a href="{{ page.url }}">{{ page.title }}</a>
+                    {% else %}
+                    <span style="user-select: none;">{{ page.title }}</span>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        <a href="{{ paginate.next.url }}" class="page-arrow">></a>
+    </div>
+{% endif %}

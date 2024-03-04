@@ -1,0 +1,49 @@
+
+
+{{ 'css_popup-styles.css' | asset_url | stylesheet_tag }}
+{% assign blog = blogs.news %}
+
+{% assign allow_date = 360 %}
+{% assign is_popup = false %}
+
+{% if blog %}
+    {% for news in blog.articles limit:2 %}
+        {% assign up_date = news.updated_at | date: '%s' | divided_by: 86400 %}
+        {% assign days_since_publication = "now" | date: '%s' | divided_by: 86400 | minus: up_date %}
+        {% if days_since_publication < allow_date %}
+            {% assign is_popup = true %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<input type="hidden" id="is_popup" value="{{ is_popup }}">
+
+<div id="popup-container">
+    <div class="popup-header">
+        <span class="popup-circle"></span>
+    </div>
+    <div class="popup-back">
+        <div class="popup-main">
+            {% if blog %}
+                {% for news in blog.articles limit:2 %}
+                    {% assign up_date = news.updated_at | date: '%s' | divided_by: 86400 %}
+                    {% assign days_since_publication = "now" | date: '%s' | divided_by: 86400 | minus: up_date %}
+                    {% if days_since_publication < allow_date %}
+                        <p class="news-title"><span class="news-date">{{ news.updated_at | date: '%Y/%m/%d' }}</span>{{ news.title }}</p>
+                        <div class="news-article">
+                            {% if news.image.src %}
+                            <div class="news-image"><img src="{{ news.image.src | img_url: 'medium' }}"></div>
+                            {% endif %}
+                            <div class="news-content">{{ news.content }}</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% if is_popup == false %}<p class="news-title">最新のお知らせはありません</p>{% endif %}
+            {% else %}
+                <p class="news-title">最新のお知らせはありません</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+

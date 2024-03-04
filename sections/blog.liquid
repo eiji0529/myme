@@ -1,0 +1,44 @@
+
+
+{{ 'css_blog.css' | asset_url | stylesheet_tag }}
+
+
+{% paginate blog.articles by 10 %}
+
+<div class="news-area">
+  <h1>{{ 'news.past_title' | t }}</h1>
+
+  <ul class="nw-list">
+    {% for article in blog.articles %}
+      <li>
+        <div class="news-title">
+          <span>{{ article.created_at | date: "%Y/%m/%d" }}</span>
+          <p>{{ article.title }}</p>
+        </div>
+        <div class="news-article">
+          {% if article.image.src %}
+            <div class="news-image">
+              <img src="{{ article.image.src | img_url: 'medium' }}">
+            </div>
+          {% endif %}
+          <div class="news-context">
+            {% if article.excerpt.size > 0 %}
+              {{ article.excerpt }}
+            {% else %}
+              <p>{{ article.content | truncate: 70 }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="detail-btn">
+          <a href="{{ article.url }}" class="submit-btn">{{ 'news.to_detail' | t }}</a>
+        </div>
+      </li>
+    {% endfor %}
+    {% if paginate.pages > 1 %}
+      {% render 'paginate' paginate:paginate %}
+    {% endif %}
+  </ul>
+</div>
+
+{% endpaginate %}
+

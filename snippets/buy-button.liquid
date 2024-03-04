@@ -1,0 +1,33 @@
+
+
+{% for variant in product.variants %}
+    {% if variant.option2 %}
+        {% assign opt2 = variant.option2 %}
+    {% else %}
+        {% assign opt2 = "none" %}
+    {%endif %}
+    <input type="hidden" id="id-{{ variant.option1 }}-{{ opt2 }}" value="{{ variant.id }}" class="option_id">
+    <input type="hidden" id="inventry-{{ variant.option1 }}-{{ opt2 }}" value="{{ variant.inventory_quantity }}" class="option_inventory">
+    <input type="hidden" id="price-{{ variant.option1 }}-{{ opt2 }}" value="{{ variant.price }}" class="option_price">
+    <input type="hidden" id="compare_at_price-{{ variant.option1 }}-{{ opt2 }}" value="{{ variant.compare_at_price }}" class="option_compare_at_price">
+{% endfor %}
+
+<form method="post" id="buy_data" enctype="multipart/form-data">
+    <input type="hidden" name="id" id="buy-id">
+    <input type="hidden" name="quantity" id="buy-qty" value=1>
+</form>
+
+<div>
+    {% assign text = 'product.detail.buynow-btn' | t %}
+    <button type="button" id="buy-now" class="submit-btn">{{ text }}</button>
+</div>
+
+<div class="add-cart">
+    {% assign text = 'product.detail.buy-btn' | t %}
+    <button type="button" id="add-to-cart" class="submit-btn"><span>{{ text }}</span></button>
+</div>
+
+<div class="go-cart">
+    {% assign text = 'product.detail.go_cart' | t %}
+    <button type="button" id="go-to-cart" class="submit-btn"onclick="window.location.href='{{ routes.cart_url }}'"><span>{{ text }}</span></button>
+</div>

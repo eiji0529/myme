@@ -1,0 +1,187 @@
+
+
+.news-area {
+    @media screen and (min-width:901px) {
+        width: 60%;
+    }
+    @media screen and (max-width:900px) {
+        width: 85%;
+    }
+    margin: auto;
+    color: var(--white);
+    h1 {
+        text-align: center;
+        color: var(--white);
+    }
+}
+.nw-list {
+    li {
+        border-top: 2px solid;
+        border-bottom: 2px solid;
+        @media screen and (min-width:901px) {
+            padding-left: 1em;
+        }
+        margin: 40px 0;
+    }
+    li:nth-child(2n) {
+        border-color: var(--blue);
+    }
+    li:nth-child(2n+1) {
+        border-color: var(--pink);
+    }
+}
+@media screen and (min-width:901px) {
+    .news-title {
+        display: flex;
+        font-size: var(--head-font-size);
+        margin-top: 10px;
+        p {
+            margin: 0 0 0 1.2em;
+        }
+    }
+}
+@media screen and (max-width:900px) {
+    .news-title {
+        text-align: center;
+        font-size: var(--head-font-size);
+        margin-top: 10px;
+        p {
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (min-width:901px) {
+    .news-article {
+        display: flex;
+        .news-image {
+            margin-top: 0.5em;
+            width: 30%;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+@media screen and (max-width:900px) {
+    .news-article {
+        .news-image {
+            width: 60%;
+            margin: auto;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+.news-context {
+    margin-left: 1em;
+    margin-right: 5em;
+    font-size: var(--base-font-size);
+    p {
+        margin: 0.2em 0;
+    }
+}
+.detail-btn {
+    display: flex;
+    margin-bottom: 10px;
+    @media screen and (min-width:901px) {
+        a {
+            margin-left: auto;
+            margin-right: 50px;
+            height: auto;
+            width: fit-content;
+            font-size: var(--small-font-size);
+            padding: 1px 1.2em;
+            color: var(--dark-gray);
+        }
+    }
+    @media screen and (max-width:900px) {
+        a {
+            margin-left: auto;
+            margin-right: 10px;
+            height: auto;
+            width: fit-content;
+            font-size: var(--small-font-size);
+            padding: 5px 1.4em;
+            color: var(--dark-gray);
+        }
+    }
+}
+
+
+
+/* お知らせ詳細ページ */
+.news-separate {
+    color: var(--white);
+    margin-top: 40px;
+    @media screen and (min-width:901px) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.news-detail {
+    @media screen and (min-width:901px) {
+        width: 40%;
+        margin: 0 10% 120px 20%;
+    }
+    @media screen and (max-width:900px) {
+        margin: 0 5% 80px 5%;
+    }
+    div {
+        font-size: var(--small-font-size);
+    }
+    h2 {
+        font-size: var(--head-font-size);
+        margin: 0.3em 0;
+    }
+    p {
+        font-size: var(--base-font-size);
+        margin: 0.5em 0;
+    }
+    .news-move {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.8em;
+        a {
+            padding: .3em .8em;
+            border: 1px solid var(--white);
+        }
+    }
+    .news-image {
+        width: 100%;
+        margin: 0.3em 0;
+        img {
+            width: 100%;
+        }
+    }
+}
+.newers {
+    width: 20%;
+    margin-right: 10%;
+    .newer-list {
+        li {
+            padding: 0.2em 0.5em;
+            border: 1px solid var(--white);
+            box-sizing: border-box;
+            margin-bottom: -1px;
+            font-size: var(--small-font-size);
+            .newer-title {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-text-overflow: ellipsis;
+                -o-text-overflow: ellipsis;
+                -webkit-line-clamp: 1;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width:900px) {
+    .sp-hidden {
+        display: none;
+    }
+}

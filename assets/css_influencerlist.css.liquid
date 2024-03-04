@@ -1,0 +1,88 @@
+
+
+
+.top-influencerlist {
+  width: 85%;
+  margin: auto;
+  margin-bottom: 60px;
+}
+.i-box {
+  margin: 60px auto;
+  background-color: var(--dark-gray);
+  border: 6px solid var(--pink);
+}
+
+.box-name {
+  font-size: larger;
+}
+.box-description pre {
+  margin: 0;
+}
+.box-description {
+  margin-top: 1em;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.i-box:nth-child(2n) {
+  border-color: var(--blue);
+}
+.box-name {
+  border-bottom: 1px solid;
+}
+.i-box:nth-child(2n+1) .box-name {
+  border-color: var(--pink);
+}
+.i-box:nth-child(2n) .box-name {
+  border-color: var(--blue);
+}
+
+@media screen and (min-width:901px) {
+  .i-inner-box {
+    display: flex;
+    padding: 40px;
+  }
+  .i-img {
+    width: 40%;
+  }
+  .i-img img {
+    width: 100%;
+  }
+  .i-context {
+    color: var(--white);
+    margin: 0 30px;
+    width: 50%;
+  }
+  
+  .i-box:nth-child(2n) .i-context {
+    order: 0;
+  }
+  .i-box:nth-child(2n) .i-img {
+    order: 1;
+    margin-left: auto;
+  }
+}
+
+
+
+/* -----------------------------------------
+スマホ用CSS
+--------------------------------------------*/
+@media screen and (max-width:900px) {
+  .i-inner-box {
+    display: block;
+    padding: 15px;
+  }
+  .i-img {
+    width: 90%0%;
+  }
+  .i-img img {
+    width: 100%;
+  }
+  .box-name {
+    margin-top: 1em;
+  }
+  .i-context {
+    color: var(--white);
+  }
+}

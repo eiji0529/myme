@@ -1,0 +1,133 @@
+
+
+
+#popup-container {
+    display: none;
+    background: linear-gradient(to right, var(--blue), var(--pink));
+    border: 1px solid var(--base-gray);
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+    z-index: 10;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.popup-header {
+    background-color: var(--dark-gray);
+    height: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+}
+
+.popup-circle {
+    cursor: pointer;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: var(--pink);
+    border-radius: 50%;
+    margin-left: 15px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.popup-back {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+#popup-container p {
+    color: var(--dark-gray);
+}
+
+.news-date {
+    margin-right: 1em;
+    font-size: var(--small-font-size);
+}
+.news-title {
+    font-size: var(--base-font-size);
+    margin: 0.3em 0 0 0;
+}
+@media screen and (min-width:901px) {
+    .news-article {
+        display: flex;
+    }
+    .news-image {
+        width: 30%;
+        margin-top: 0.3em;
+        img {
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width:900px) {
+    .news-image {
+        width: 70%;
+        margin: auto;
+        img {
+            width: 100%;
+        }
+    }
+}
+.news-content {
+    font-size: var(--small-font-size);
+    margin: 0 1em 1.3em 1em;
+    p {
+        margin: 0;
+    }
+}
+
+
+@media screen and (min-width:901px) {
+
+    #popup-container {
+        width: 50%;
+    }
+
+    .popup-main {
+        background-color: var(--white);
+        margin: 50px 60px 100px;
+        padding: 20px 20px 30px;
+        border: 1px solid var(--dark-gray);
+        text-align: left;
+        min-width: calc(100% - 160px);
+        min-width: -webkit-fill-available;  min-width: -moz-available;
+        max-height: 30vh;
+        overflow-y: scroll;
+    }
+
+}
+
+
+
+
+
+/* -----------------------------------------
+スマホ用CSS
+--------------------------------------------*/
+@media screen and (max-width:900px) {
+
+    #popup-container {
+        width: 80%;
+    }
+
+    .popup-main {
+        background-color: var(--white);
+        margin: 30px 20px 60px;
+        padding: 10px 1em 20px;
+        border: 1px solid var(--dark-gray);
+        text-align: left;
+        min-width: calc(100% - 160px);
+        min-width: -webkit-fill-available;  min-width: -moz-available;
+        max-height: 30vh;
+        overflow-y: scroll;
+    }
+
+}

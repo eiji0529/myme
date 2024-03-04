@@ -1,0 +1,140 @@
+{{ 'css_product.css' | asset_url | stylesheet_tag }}
+{{ 'css_snipets.css' | asset_url | stylesheet_tag }}
+
+
+<input type="hidden" id="word_out_of_stock" value="{{ 'for_js.out_of_stock' | t }}">
+<input type="hidden" id="one_price" value="{{ product.price }}">
+
+<section id="product-page">
+  <div id="product-area">
+    <div class="img-area swiper-container swiper">
+      <ul class="swiper-wrapper">
+        {% for image in product.images %}
+          <li class="swiper-slide">
+            <img class="lazyload" data-original="{{ image.src | product_img_url: '900x' }}" loading="lazy">
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="detail-area">
+      <div class="item-varie">
+        <ul class="variations">
+          <li class="details item-title">
+            <div class="detail-title sp-detail-title">{{ 'product.detail.title' | t }}</div>
+            <div class="detail-content">{{ product.title }}</div>
+          </li>
+          <li class="details item-price">
+            <div class="detail-title sp-detail-title">{{ 'product.detail.price' | t }}</div>
+            <div class="detail-content">
+              <div id="main-price">{{ product.price | money }}</div>
+              {% if product.compare_at_price > product.price %}
+                <span class="origin-price">{{ product.compare_at_price | money }}</span>
+                <span class="off-price">{{ product.compare_at_price | minus: product.price | money }}off</span>
+              {% endif %}
+            </div>
+          </li>
+
+          {% for option in product.options_with_values  %}
+            {% if option.name == "サイズ" or option.name == "size" %}
+              {% assign name = "size" %}
+              <li class="details item-size">
+                {% render 'details' option:option name:name %}
+              </li>
+            {% elsif option.name == "色" or option.name == "color" %}
+            {% assign name = "color" %}
+              <li class="details item-color">
+                {% render 'details' option:option name:name %}
+              </li>
+            {% endif %}
+          {% endfor %}
+
+          <li>
+            <div class="submit-area">
+              <div class="submit-details b_dashed">
+                <div class="detail-title">{{ 'product.detail.qty' | t }}</div>
+                {% render 'qty-select' %}
+                <div id="amount">{{ product.price | money }}</div>
+              </div>
+
+              <div class="submit-details">
+                <div class="detail-title">{{ 'product.detail.total' | t }}</div>
+                <div id="total-amount">{{ product.price | money }}</div>
+              </div>
+
+              <div class="buy-buttons">
+                {% render 'buy-button' %}
+              </div>
+            </div>
+          </li>
+        
+        </ul>
+      </div>
+
+
+      <div class="item-description">
+        <div class="description-area">
+          <div class="item-description-title">
+            {{ 'product.description.details' | t }}
+          </div>
+          <div class="item-description-content">{{ product.description }}</div>
+        </div>
+
+        <div class="sizeguide-area">
+          <div class="item-description-title">{{ 'product.description.sizeguide' | t }}</div>
+          <div class="item-description-content">
+
+            {% if product.metafields.custom["size_position"].value %}
+            <div class="size-table">
+              <div class="size-position">
+                <div class="size-blank">サイズ</div>
+                {% for name in product.metafields.custom["size_position"].value %}
+                  <div>{{ name }}</div>
+                {% endfor %}
+              </div>
+
+              {% assign metafield_order = 'free_size,f_size,xxs_size,xs_size,s_size,m_size,l_size,ll_size,xl_size,2l_size,xxl_size,3l_size' | split: ',' %}
+              {% for field in metafield_order %}
+                {% if product.metafields.custom[field].value %}
+                  <div class="size-values">
+                    {% assign size_name = field | split: "_size" %}
+                    <div class="size-title">{{ size_name[0] | upcase }}</div>
+                    {% for val in product.metafields.custom[field].value %}
+                      {% assign size = val | split: ' ' %}
+                      {% if size[0] == 0 or size[0] == "0" %}
+                        <div>--</div>
+                      {% else %}
+                        <div>{{ size[0] }}<span>{{ size[1] }}</span></div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
+            
+            
+            {% if product.metafields.custom.size_description.value %}
+              <pre>{{ product.metafields.custom.size_description.value }}</pre>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="select-notice hidden">{{ 'product.detail.select-notice' | t }}</div>
+
+
+<script>
+  const product_handle = "{{ product.handle | handleize }}";
+  const add_text = "{{ 'product.detail.added_cart' | t }}";
+  const add_error_text = "{{ 'product.detail.added_error' | t }}";
+</script>
+{{ 'product.js' | asset_url | script_tag }}
+
+{{ 'swiper_control.js' | asset_url | script_tag }}
+

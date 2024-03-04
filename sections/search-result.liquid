@@ -1,0 +1,75 @@
+
+{{ 'css_item-list.css' | asset_url | stylesheet_tag }}
+
+
+{% if search.results_count > 0 %}
+  {% paginate search.results by 32 %}
+
+  <!-- ページネーションの表示コード -->
+    {% render 'paginate' paginate:paginate %}
+
+
+    <!-- 商品ページの表示コード -->
+    <ul class="item-list">
+      {% for item in search.results %}
+        {% if item.object_type == "product" %}
+          <!--show product details here -->
+          <li class="item-base delighter" data-delighter>
+              <div class="item-img">
+                  <a href="{{ item.url }}">
+                      <img class="lazyload" data-original="{{ item.featured_image | product_img_url: 'medium' }}">
+                  </a>
+              </div>
+              <a class="item-explain" href="{{ item.url }}">
+                  <p>{{ item.title }}</p>
+                  <p>
+                      {{ item.price | money }}
+                      {% if item.compare_at_price > item.price %}
+                          <span class="origin-price">{{ item.compare_at_price | money }}</span>
+                      {% endif %}
+                  </p>
+              </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+
+
+    <!-- ページネーションの表示コード -->
+    {% render 'paginate' paginate:paginate %}
+
+  {% endpaginate %}
+{% else %}
+  <div class="no-result-area">
+    <div class="no_result">{{ 'search.no_result' | t }}</div>
+    <form action="{{ routes.search_url }}" method="get" role="search">
+      <div class="re-search-text">{{ 'search.re_search' | t }}</div>
+      <div id="re-search_form">
+        <input
+            class=""
+            id="re-search-box"
+            type="text"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search.search' | t }}"
+            autocomplete="off"
+        >
+          <button type="button" class="re-close-btn">
+              <svg class="icon" aria-hidden="true" focusable="false">
+                  <use xlink:href="#icon-close">
+              </svg>
+          </button>
+        <button id="re-search-btn">
+            <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="#icon-search">
+            </svg>
+        </button>
+      </div>
+    </form>
+
+    <div class="return-link">
+      <a href="{{ routes.root_url }}" class="return-top submit-btn">{{ 'general.404.return_top' | t }}</a>
+    </div>
+  </div>
+{% endif %}
+

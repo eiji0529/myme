@@ -1,0 +1,131 @@
+
+
+{{ 'css_myaccount.css' | asset_url | stylesheet_tag }}
+
+<div class="myac-title">
+  <p>{{ 'customers.order.title' | t }}</p>
+</div>
+
+<div class="myac-main">
+  <div>
+    <div class="order-number">
+      <div>{{ 'customers.order.number' | t }}</div>
+      <div>{{ order.order_number }}</div>
+    </div>
+    <div class="order-date">
+      <div>{{ 'customers.order.date' | t }}</div>
+      <div>{{ order.created_at | date:'%Y/%m/%d' }}</div>
+    </div>
+  </div>
+
+  <div class="order-detail-area">
+    <table class="order-items order-pc">
+      <thead>
+        <td>{{ 'customers.order.name' | t }}</td>
+        <td>
+          {% for sku in order.line_items[0].options_with_values %}
+            {% if forloop.last %}
+              {{ sku.name }}
+            {% else %}
+              {{ sku.name }}/
+            {% endif %}
+          {% endfor %}
+        </td>
+        <td>{{ 'customers.order.price' | t }}</td>
+        <td>{{ 'customers.order.qty' | t }}</td>
+        <td>{{ 'customers.order.line_amount' | t }}</td>
+      </thead>
+      <tbody>
+        {%- for line_item in order.line_items -%}
+        <tr>
+          <td>{{ line_item.product.title }}</td>
+          <td>{{ line_item.variant.title }}</td>
+          <td>{{ line_item.price | money_with_currency }}</td>
+          <td>{{ line_item.quantity }}</td>
+          <td>{{ line_item.line_price | money_with_currency }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="order-items order-sp">
+      {%- for line_item in order.line_items -%}
+      <div class="order-item">
+        <div>
+          <div>{{ 'customers.order.name' | t }}</div>
+          <div>{{ line_item.product.title }}</div>
+        </div>
+        <div>
+          <div>
+            {% for sku in order.line_items[0].options_with_values %}
+              {% if forloop.last %}
+                {{ sku.name }}
+              {% else %}
+                {{ sku.name }}/
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div>{{ line_item.variant.title }}</div>
+        </div>
+        <div>
+          <div>{{ 'customers.order.price' | t }}</div>
+          <div>{{ line_item.price | money_with_currency }}</div>
+        </div>
+        <div>
+          <div>{{ 'customers.order.qty' | t }}</div>
+          <div>{{ line_item.quantity }}</div>
+        </div>
+        <div>
+          <div>{{ 'customers.order.line_amount' | t }}</div>
+          <div>{{ line_item.line_price | money_with_currency }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="total-list">
+      <div class="order-subtotal">
+        <div>小計</div>
+        <div>{{ order.line_items_subtotal_price | money }}</div>
+      </div>
+      <div>
+        <div>配送料</div>
+        <div>{{ order.shipping_price | money_with_currency }}</div>
+      </div>
+      <div class="order-subtotal">
+        {%- for tax_line in order.tax_lines -%}
+        <div>税<span>({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</span></div>
+        <div>
+          {{ tax_line.price | money_with_currency }}
+        </div>
+        {%- endfor -%}
+      </div>
+      <div>
+        <div>合計</div>
+        <div>{{ order.total_net_amount | money_with_currency }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="myac-addresses">
+    <div class="billings">
+      <h2 class="address-title">{{ 'customers.order.billing_address' | t }}</h2>
+      <p>
+        <strong class="statuses">{{ 'customers.order.payment_status' | t }}:</strong>
+        {{ order.financial_status_label }}
+      </p>
+      {{ order.billing_address | format_address }}
+    </div>
+    <div class="shippings">
+      <h2 class="address-title">{{ 'customers.order.shipping_address' | t }}</h2>
+      <p>
+        <strong class="statuses">{{ 'customers.order.fulfillment_status' | t }}:</strong>
+        {{ order.fulfillment_status_label }}
+      </p>
+      {{ order.shipping_address | format_address }}
+    </div>
+  </div>
+
+  <button type="button" onclick="history.back()" class="history-back">{{ 'general.move.back' | t }}</button>
+</div>
+

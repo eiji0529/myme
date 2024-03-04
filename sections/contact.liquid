@@ -1,0 +1,35 @@
+
+
+{{ 'css_contact.css' | asset_url | stylesheet_tag }}
+
+
+<div class="contact-area">
+  <h1>{{ page.title }}</h1>
+    {% if form.posted_successfully? %}
+      <div class="contact-sended">
+        {{ 'pages.contact.sended_html' | t: shopmail:shop.email }}
+      </div>
+      <div class="return-link">
+        <a href="/" class="return-top submit-btn">トップページへ戻る</a>
+      </div>
+    {% else %}
+      {% form 'contact' %}
+      {{ form.errors | default_errors }}
+        <div class="input-group">
+          <input type="text" id="ContactFormName" name="contact[name]" placeholder="{{ 'pages.contact.name' | t }}">
+          <label for="ContactFormName">{{ 'pages.contact.name' | t }}</label>
+        </div>
+        <div class="input-group">
+          <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="{{ 'pages.contact.email' | t }}">
+          <label for="ContactFormEmail">{{ 'pages.contact.email' | t }}</label>
+        </div>
+        <div class="input-group">
+          <textarea rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'pages.contact.message' | t }}"></textarea>
+          <label for="ContactFormMessage">{{ 'pages.contact.message' | t }}</label>
+        </div>
+        <div class="send-btn">
+          <input type="submit" class="submit-btn" value="{{ 'pages.contact.send' | t }}">
+        </div>
+      {% endform %}
+    {% endif %}
+</div>

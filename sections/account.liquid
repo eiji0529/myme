@@ -1,0 +1,76 @@
+
+
+{{ 'css_myaccount.css' | asset_url | stylesheet_tag }}
+
+<div class="myac-title">
+  <p>{{ 'customers.myaccount.title' | t }}</p>
+</div>
+
+<div class="myac-main">
+  <div class="myac-section">
+    <div class="shipping">
+      <div>{{ 'customers.myaccount.shipping_title' | t }}</div>
+      <table class="address-list">
+        <tr>
+          <th>{{ 'customers.myaccount.myname' | t }}</th>
+          <td>{{ customer.default_address.name }}</td>
+        </tr>
+        <tr>
+          <th>{{ 'customers.myaccount.mypost' | t }}</th>
+          <td>{{ customer.default_address.zip }}</td>
+        </tr>
+        <tr>
+          <th>{{ 'customers.myaccount.myaddress' | t }}</th>
+          <td>{{ customer.default_address.address1 }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="edit-address">
+    <a href="{{ routes.account_addresses_url }}" class=""><span class="myac-link submit-btn">{{ 'customers.myaccount.edit_address' | t }}</span></a>
+  </div>
+
+  
+  <div class="myac-history">{{ 'customers.myaccount.history' | t }}</div>
+  <div class="myac-section">
+    {% paginate customer.orders by 50 %}
+    {% if customer.orders.size > 0 %}
+      {% for order in customer.orders %}
+        <div class="myac-ordered">
+          <div class="myac-order-date">
+            <div>{{ 'customers.account.date' | t }}</div>
+            <div>{{ order.created_at | date:'%Y/%m/%d'}}</div>
+          </div>
+          <div class="myac-order-detail">
+            <div class="ord-detail">
+              <div><a href="{{ order.customer_url }}">{{ 'customers.account.to_detail' | t }}</a></div>
+            </div>
+            <div class="ord-num">
+              <div>{{ 'customers.account.number' | t }}</div>
+              <div>{{ order.order_number }}</div>
+            </div>
+            <div class="ord-pay">
+              <div>{{ 'customers.account.financial' | t }}</div>
+              <div>{{ order.financial_status_label }}</div>
+            </div>
+            <div class="ord-fulfill">
+              <div>{{ 'customers.account.fulfillment' | t }}</div>
+              <div>{{ order.fulfillment_status_label }}</div>
+            </div>
+            <div class="ord-amount">
+              <div>{{ 'customers.account.amount' | t }}</div>
+              <div>{{ order.total_net_amount | money_with_currency }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="no-order">{{ 'customers.account.no_order' | t }}</p>
+    {% endif %}
+
+    {% render 'paginate' paginate:paginate %}
+    {{ paginate | default_pagination }}
+    {% endpaginate %}
+  </div>
+</div>
+

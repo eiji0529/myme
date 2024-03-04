@@ -1,0 +1,136 @@
+
+
+body {
+    background-color: var(--white);
+}
+
+.c-header {
+    width: 100%;
+    height: var(--header-height);
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    position: fixed;
+    top: 0;
+}
+
+.shop-name {
+    margin: auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--dark-gray);
+}
+.c-lang-selecter {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#lang-btn {
+    border: 1px solid var(--dark-gray);
+    color: var(--dark-gray);
+}
+.lang-selecter {
+    background-color: var(--white);
+    border: 1px solid var(--base-gray);
+    border-top: none;
+}
+.lang-selecter button:hover {
+    background-color: rgba(155,155,155,0.6);
+}
+
+
+/* ログインページ */
+.login-area,
+.pass-area {
+    width: 100%;
+    display: flex;
+    min-height: calc(100vh - var(--header-height));
+}
+.pass-area {
+    display: none;
+}
+.input-area {
+    @media screen and (min-width:901px) {
+    margin: 10% auto auto auto;
+    }
+    @media screen and (max-width:900px) {
+        margin: 20% auto auto auto;
+    }
+    width: 350px;
+}
+.login-btn {
+    margin-top: 1.5em;
+}
+
+.newn-acc {
+    display: flex;
+    justify-content: space-between;
+    font-size: small;
+    letter-spacing: 1px;
+}
+@media screen and (min-width:901px) {
+    .newn-acc {
+        margin-top: 0.8em;
+    }
+}
+@media screen and (max-width:900px) {
+    .newn-acc {
+        margin-top: 30px;
+    }
+}
+
+
+/* パスワードを忘れた場合 */
+#forgot-password {
+    cursor: pointer;
+}
+#return-login {
+    cursor: pointer;
+    margin: auto;
+}
+
+
+/* インプットボックスデザイン */
+.input-group {
+    position: relative;
+    margin-top: 2.3em;
+}
+.input-group input {
+    width: 100%;
+    transition: 0.2s;
+    border: none;
+    border-bottom: 1px solid var(--base-gray);
+    background: transparent;
+    outline: 0;
+}
+.input-group input:focus {
+    border-width: 3px;
+    border-image: linear-gradient(to right, var(--blue), var(--pink));
+    border-image-slice: 1;
+}
+.input-group input::placeholder {
+    color: transparent;
+}
+.input-group label {
+    position: absolute;
+    top: -20px;
+    display: block;
+    transition: 0.2s;
+    pointer-events: none;
+    font-size: 0.7em;
+    color: #aaa;
+}
+.input-group {
+    input:placeholder-shown ~ label {
+        color: #aaa;
+        font-size: 0.9em;
+        top: 0;
+    }
+    input:focus ~ label {
+        top: -20px;
+        font-size: 0.7em;
+        color: var(--blue);
+    }
+}
+

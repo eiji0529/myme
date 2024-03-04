@@ -1,0 +1,28 @@
+
+
+{{ 'css_item-list-menu.css' | asset_url | stylesheet_tag }}
+
+
+<div class="item-menu">
+    {% for link in linklists.main-menu.links %}
+        {% assign sub_list_handle = link.title | handleize %}
+        {% for childlink in linklists[sub_list_handle].links %}
+            {% if collection.title == childlink.title %}
+                {% assign sub_sub_list_handle = childlink.title | handleize %}
+                {% if linklists[sub_sub_list_handle].links != blank %}
+                    {% for grandchildlink in linklists[sub_sub_list_handle].links %}
+                        {% if grandchildlink.current %}
+                            <div class="item-title this-page">
+                            <a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
+                            </div>
+                        {% else %}
+                            <div class="item-title">
+                            <a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>

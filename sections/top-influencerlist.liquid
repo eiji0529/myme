@@ -1,0 +1,39 @@
+
+
+{{ 'css_influencerlist.css' | asset_url | stylesheet_tag }}
+
+
+<div class="top-influencerlist">
+  {% for collection in collections %}
+    <div class="i-box delighter" data-delighter>
+      <a class="i-inner-box" href="{{ collection.url }}">
+        <div class="i-img">
+          <img class="lazyload" data-original="{{ collection.image | img_url: '900x' }}" alt="">
+        </div>
+  
+        <div class="i-context">
+          <div class="box-name">{{ collection.title }}</div>
+          <div class="box-description">{{ collection.description }}</div>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Influencer list",
+  "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "label": "見出し",
+    "default":"テキストが入ります。"
+  }],
+  "presets":[
+    {
+      "name": "Influencer list"
+    }
+  ]
+}
+{% endschema %}

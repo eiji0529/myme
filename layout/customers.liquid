@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{ page_title }}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="{{ page_description | escape }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+  {{ content_for_header }} <!-- Header hook for plugins -->
+  {{ 'css_main.css' | asset_url | stylesheet_tag }}
+  {{ 'css_customers.css' | asset_url | stylesheet_tag }}
+
+</head>
+
+<body>
+
+  
+  {% section 'c-header' %}
+
+
+  <main role="main" id="main">
+    <div id="m-d">{{ content_for_layout }}</div>
+  </main>
+
+
+
+{% comment %}
+  最後にJavascriptを入れる
+{% endcomment %}
+{{ 'main.js' | asset_url | script_tag }}
+{{ 'customers.js' | asset_url | script_tag }}
+</body>
+</html>

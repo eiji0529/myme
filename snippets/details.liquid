@@ -1,0 +1,23 @@
+
+{% assign title = 'product.detail.' | append: name %}
+<div class="detail-title sp-detail-title">{{ title | t }}</div>
+
+<div class="detail-content">
+    {% if option.values.size == 1 %}
+        <div>
+            <label for="id_value_{{ option.values }}">
+                <input type="radio" name="{{name}}" value="{{ option.values }}" id="id_value_{{ option.values }}" class="selected-option" checked>
+                <p>{{ option.values }}</p>
+            </label>
+        </div>
+    {% else %}
+        {% for val in option.values %}
+        <div>
+            <label for="id_value_{{ val }}">
+                <input type="radio" name="{{name}}" value="{{ val }}" id="id_value_{{ val }}" class="selected-option">
+                <p>{{ val }}</p>
+            </label>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>

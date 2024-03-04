@@ -1,0 +1,400 @@
+
+
+.cart-title {
+    color: var(--white);
+    width: 80%;
+    margin: 1em auto;
+}
+
+#quantity:focus {
+    outline: none;
+    user-select: none;
+}
+
+
+#qty-minus span,
+#qty-plus span {
+    border: 2px solid var(--white)!important;
+}
+#qty-minus span::before, 
+#qty-plus span::before,
+#qty-plus span::after {
+    background-color: var(--white)!important;
+}
+
+.cart-form {
+    margin-bottom: 120px;
+}
+
+@media screen and (min-width:901px) {
+table {
+    color: var(--white);
+    width: 80%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+.separator td {
+    border-bottom: 1px solid var(--white);
+    border-right: none;
+}
+table th {
+    border-top: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+}
+table td {
+    border-right: 1px solid var(--white);
+}
+table td:last-child {
+    border: none;
+}
+table td:first-child {
+    display: flex;
+    margin-left: 0.6em;
+}
+table td:first-child span,
+table td > div {
+    margin: auto;
+    margin-left: 1em;
+}
+}
+
+.cart-option div:first-child {
+    margin: auto;
+    margin-bottom: 0.8em;
+}
+
+
+/* 注文メモ */
+.cart_note {
+    width: 80%;
+    position: relative;
+    @media screen and (min-width:901px) {
+        margin: 60px auto auto auto;
+    }
+    @media screen and (max-width:900px) {
+        margin: auto auto 40px auto;
+    }
+    textarea {
+        width: 100%;
+    }
+}
+.cart_note textarea {
+    width: 100%;
+    transition: 0.2s;
+    color: var(--white);
+    font-size: var(--base-font-size);
+    padding: 0.4em 0.8em 0.4em 0.6em;
+    border: 1px solid var(--white);
+    background: var(--dark-gray);
+    outline: 0;
+    box-sizing: border-box;
+    height: 5em;
+}
+.cart_note textarea::placeholder {
+    color: transparent;
+}
+.cart_note label {
+    position: absolute;
+    top: -20px;
+    display: block;
+    transition: 0.2s;
+    pointer-events: none;
+    font-size: 0.7em;
+    color: #aaa;
+    padding-left: 0.6em;
+}
+.cart_note {
+    textarea:placeholder-shown {
+        background: transparent;
+    }
+    input:placeholder-shown ~ label,
+    textarea:placeholder-shown ~ label {
+        color: #aaa;
+        font-size: 0.9em;
+        top: 0;
+        padding-left: 0.6em;
+    }
+    input:focus ~ label,
+    textarea:focus ~ label {
+        top: -20px;
+        font-size: 0.7em;
+        color: var(--blue);
+    }
+}
+.cart_note textarea:focus {
+    border-width: 3px;
+    border-image: linear-gradient(to right, var(--blue), var(--pink));
+    border-image-slice: 1;
+    background: var(--dark-gray);
+}
+
+
+/* 合計欄 */
+.cart-total {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    border-top: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+    color: var(--white);
+}
+.cart-total > div {
+    width: 50%;
+    text-align: center;
+}
+.cart-amount {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px 0;
+    margin: 15px 0;
+}
+.cart-amount-title {
+    font-size: var(--head-font-size);
+}
+.total-price,
+.shipping-price {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    font-size: var(--base-font-size);
+}
+.tax-notice {
+    font-size: var(--small-font-size);
+}
+.cart-submit {
+    margin: auto;
+}
+.cart-submit button {
+    font-weight: bold;
+}
+
+.submit-btn:hover {
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--blue);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+    }
+}
+
+
+.delete {
+    cursor: pointer;
+    position: relative;
+    height: 24px;
+    width: 24px;
+}
+.delete span {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    height: 1px;
+    width: 24px;
+    background-color: red;
+}
+.delete span:nth-child(1) {
+    transform: rotate(45deg);
+}
+.delete span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+
+/* 空の時 */
+.empty-text {
+    color: var(--white);
+    width: 80%;
+    margin: 1em auto;
+}
+.return-link {
+    color: #000;
+    margin-top: 30px;
+}
+
+/* 買い物を続けるボタン */
+.continue-btn {
+    border: 1px solid var(--white);
+    border-radius: 1em;
+    padding: 2px 10px;
+}
+
+
+
+@media screen and (min-width:901px) {
+    .cart-amount {
+        border-right: 1px solid var(--white);
+    }
+    .cart-submit button {
+        width: 35%;
+        height: 2.5em;
+        display: block;
+        margin: auto auto 1.5em auto;
+    }
+}
+
+
+/* -----------------------------------------
+スマホ用CSS
+--------------------------------------------*/
+@media screen and (max-width:900px) {
+
+    table {
+        color: var(--white);
+        margin: auto;
+        width: 90%;
+        border-collapse: collapse;
+    }
+    thead {
+        display: none;
+    }
+    .cart-item td {
+        display: flex;
+        border-bottom: 1px solid var(--white);
+        padding: 8px 0;
+    }
+    .cart-item td:last-child {
+        border-bottom: 2px solid var(--white);
+    }
+    .cart-item td:first-child {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        border-top: 2px solid var(--white);
+    }
+    .cart-item td::before {
+        content: attr(data-label);
+        width: 30%;
+        max-width: 10em;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid var(--white);
+    }
+    .cart-item td::before:first-child {
+        border: none;
+    }
+    .cart-item td:last-child::before {
+        content: none;
+    }
+    .cart-item td > div {
+        margin: auto;
+        text-align: center;
+    }
+
+    .separator td {
+        display: none;
+    }
+    .separator td:first-child {
+        display: block;
+        padding: 40px 0;
+    }
+
+    .cart-total {
+        flex-wrap: wrap;
+        margin: auto;
+    }
+    .cart-total > div {
+        width: 100%;
+    }
+    .cart-submit {
+        padding: 15px 0;
+        border-top: 2px solid var(--white);
+    }
+    .cart-submit button {
+        font-size: var(--head-font-size);
+        width: 50%;
+        height: 2.4em;
+        display: block;
+        margin: auto auto 1.2em auto;
+    }
+}
+
+/* 数量変更のローディング */
+.cart-loader {
+    transition: 0.3s;
+    display: flex;
+    position: fixed;
+    top: calc(var(--header-height) + 30px);
+    right: 0;
+    height: 3em;
+    width: fit-content;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    visibility: hidden;
+    transform: translateX(100%);
+    border-radius: 1.5em 0 0 1.5em;
+    span {
+        transition: 0.5s;
+        margin: auto;
+    }
+    p {
+        opacity: 0;
+        transition: 0.3s;
+    }
+}
+.cart-loader.connecting {
+    visibility: visible;
+    transform: translateX(0);
+    width: 100px;
+    span {
+        display: flex;
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        background: linear-gradient(var(--pink) 35%,var(--blue));
+        margin: auto 10px;
+        animation: loader_connect 1s linear infinite;
+    }
+    span::after {
+        content: "";
+        display: block;
+        width: 1.25em;
+        height: 1.25em;
+        background-color: var(--dark-gray);
+        border-radius: 50%;
+        margin: auto;
+    }
+}
+.cart-loader.success {
+    visibility: visible;
+    transform: translateX(0);
+    width: fit-content;
+    span {
+        transform: rotate(0deg);
+        color: var(--white);
+        margin: auto;
+        padding: 0 18px;
+        text-shadow: 0 0 4px #000;
+    }
+    p {
+        margin: auto 2em auto auto;
+        opacity: 1;
+    }
+}
+.cart-loader.error {
+    visibility: visible;
+    transform: translateX(0);
+    width: fit-content;
+    span {
+        color: red;
+        margin: auto;
+        padding: 0 18px;
+        text-shadow: 0 0 4px #000;
+    }
+}
+@keyframes loader_connect {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

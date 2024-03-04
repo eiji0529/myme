@@ -1,0 +1,19 @@
+
+{% style  %}
+#base_background {
+    background-image: url({{ 'base_ground.png' | asset_url }});
+
+    background-size: 100%;
+    background-repeat: repeat-y;
+
+    position: absolute;
+    top: 0;
+    z-index: -10;
+    width: 100%;
+}
+{% endstyle  %}
+
+
+<canvas id="base_background"></canvas>
+
+

@@ -1,0 +1,162 @@
+
+
+
+@media screen and (min-width:901px) {
+    :root {
+        --img-padding: 20px;
+    }
+    .item-list {
+        margin: 10px 60px;
+    }
+    .item-base {
+        width: 25%;
+    }
+}
+@media screen and (max-width:900px) {
+    :root {
+        --img-padding: 10px;
+    }
+    .item-list {
+        margin: 10px 10px;
+    }
+    .item-base {
+        width: 50%;
+    }
+}
+
+
+.item-list-title {
+    text-align: center;
+    color: var(--white);
+    text-shadow: 0 0 8px var(--pink);
+}
+
+
+.item-list {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.item-base {
+    background-color: var(--dark-gray);
+    margin-bottom: 40px;
+}
+.item-img:hover {
+    filter: brightness(1.17);
+}
+
+.item-img {
+    transition: 0.2s;
+    width: auto;
+    padding: var(--img-padding);
+    padding-bottom: 0;
+}
+.item-img img {
+    width: 100%;
+}
+
+
+/* 説明文 */
+.item-explain p {
+    margin: 0;
+    color: var(--white);
+    padding-left: var(--img-padding);
+}
+
+/* 値段 */
+.origin-price {
+    font-size: smaller;
+    margin-left: 1.3em;
+    position: relative;
+}
+.origin-price::before {
+    position: absolute;
+    content: "";
+    display: block;
+    transform: rotate(-10deg);
+    background-color: rgb(200, 0, 0);
+    width: 120%;
+    height: 2px;
+    top: 50%;
+    left: -10%;
+    opacity: 0.8;
+}
+
+/* 検索結果無し */
+@media screen and (min-width:901px) {
+    .no-result-area {
+        margin: auto;
+        width: 50svw;
+    }
+}
+@media screen and (max-width:900px) {
+    .no-result-area {
+        margin: auto;
+        width: 90svw;
+    }
+}
+.no_result {
+    color: var(--white);
+    font-size: var(--head-font-size);
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 1em;
+}
+.re-search-text {
+    color: var(--white);
+}
+#re-search_form {
+    height: 2em;
+    display: flex;
+    position: relative;
+}
+#re-search-box {
+    box-sizing: border-box;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    color: var(--dark-gray);
+    background-color: var(--white);
+    border: 2px solid var(--dark-gray);
+    font-size: var(--head-font-size);
+    padding-left: 0.8em;
+}
+#re-search-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    height: 100%;
+    width: 2.4em;
+    margin-left: 0.5em;
+}
+#re-search-btn svg {
+    height: 100%;
+    width: 100%;
+    fill: var(--white);
+    stroke: var(--white);
+    stroke-width: 1px;
+}
+.re-close-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    height: 65%;
+    width: 2.4em;
+    position: absolute;
+    right: 3.5em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.re-close-btn svg {
+    height: 100%;
+    width: 100%;
+    fill: var(--dark-gray);
+    stroke: var(--dark-gray);
+    stroke-width: 1px;
+}
+.return-link {
+    text-align: center;
+    margin-top: 50px;
+}

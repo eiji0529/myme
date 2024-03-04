@@ -1,0 +1,93 @@
+
+
+{{ 'css_cart.css' | asset_url | stylesheet_tag }}
+{{ 'css_snipets.css' | asset_url | stylesheet_tag }}
+
+
+<h1 class="cart-title">CART</h1>
+
+{% if cart.item_count > 0 %}
+  <form action="/cart" method="post" novalidate class="cart-form">
+    <table id="cart_table">
+      <thead>
+        <th>{{ 'cart.item-detail' | t}}</th>
+        <th>{{ 'cart.option' | t}}</th>
+        <th>{{ 'cart.price' | t}}</th>
+        <th>{{ 'cart.subtotal' | t }}</th>
+        <th>{% comment "削除" %}{% endcomment %}</th>
+      </thead>
+
+      <tbody>
+        {% for item in cart.items %}
+          <tr class="cart-item">
+            <td>
+              <input type="hidden" class="item-id" value="{{ item.id }}">
+              <a href="{{ item.url | within: collections.all }}">
+                <img src="{{ item | img_url: 'x180' }}" alt="{{ item.title | escape }}">
+              </a>
+              <span>{{ item.product.title }}</span>
+            </td>
+            <td data-label="{{ 'cart.option' | t}}">
+              <div class="cart-option">
+                <div>{{ item.variant.title }}</div>
+                {% render 'qty-select' item:item %}
+              </div>
+            </td>
+            <td data-label="{{ 'cart.price' | t}}">
+              <div>{{ item.price | money }}</div>
+            </td>
+            <td data-label="{{ 'cart.subtotal' | t}}">
+              <div class="subtotal">{{ item.original_line_price | money }}</div>
+            </td>
+            <td>
+              <div class="delete"><span></span><span></span></div>
+            </td>
+          </tr>
+          <tr class="separator">
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="cart_note">
+      <textarea id="note" name="note" class="cart__field cart__field--textarea" aria-label="注文に関するメモを残す" placeholder="注文に関するメモを残す"></textarea>
+      <label for="note">注文メモ</label>
+    </div>
+
+    <div class="cart-total">
+      <div class="cart-amount">
+        <div>
+          <div class="cart-amount-title">{{ 'cart.total_price' | t }}</div>
+          <div class="total-price">{{ cart.total_price | money }}</div>
+          <div class="tax-notice">{{ 'cart.tax_display' | t }}</div>
+        </div>
+  
+        <div>
+          <div class="cart-amount-title">{{ 'cart.shipping' | t }}</div>
+          <div class="shipping-price">
+            {{ 'cart.shipping_display' | t }}
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-submit">
+        <button type="submit" name="checkout" class="submit-btn">{{ 'cart.checkout' | t }}</button>
+        <a href="/" class="continue-btn">{{ 'cart.continue' | t }}</a>
+      </div>
+    </div>
+
+  </form>
+{% else %}
+  <div class="empty-text">
+    <div>{{ 'cart.empty' | t }}</div>
+    <div class="return-link">
+      <a href="{{ routes.root_url }}" class="return-top submit-btn">{{ 'general.404.return_top' | t }}</a>
+    </div>
+  </div>
+{% endif %}
+
+<div class="cart-loader"><span></span><p></p></div>
+
+
+{{ 'cart.js' | asset_url | script_tag }}

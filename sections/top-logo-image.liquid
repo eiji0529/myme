@@ -1,0 +1,70 @@
+
+{% style %}
+:root {
+    --main-logo-height: calc(100vh - var(--header-height));
+}
+.base-top-blank {
+    width: 100%;
+    height: var(--main-logo-height);
+}
+#base-top {
+    position: absolute;
+    top: var(--header-height);
+    width: 100%;
+    z-index: -1;
+}
+.base-design {
+    transition: 0.3s;
+    height: var(--main-logo-height);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (min-width:901px) {
+    .circle-img {
+        position: relative;
+        height: 80vh;
+    }
+    .main-logo-img {
+        position: absolute;
+        width: 82vh;
+    }
+}
+@media screen and (max-width:900px) {
+    .circle-img {
+        position: relative;
+        width: 80%;
+    }
+    .main-logo-img {
+        position: absolute;
+        width: 90%;
+    }
+}
+.base-design img {
+    height: 100%;
+    width: 100%;
+}
+.main-logo-video {
+    width: 100%;
+}
+#video source {
+    transition: all 0.5s;
+    opacity: 0;
+}
+{% endstyle %}
+
+
+<div id="base-top">
+    <div class=base-design>
+        <div class="circle-img"><img src="{{ 'circle.png' | asset_img_url: '900x900' }}" alt=""></div>
+
+        <div class="main-logo-img">
+            <video id="video" class="main-logo-video" autoplay loop muted playsinline poster="{{ 'logo_webp.webp' | asset_url }}">
+                <source src="{{ 'logo_webm.webm' | asset_url }}" type="video/webm">
+            </video>
+        </div>
+    </div>
+</div>
+
+<div class="base-top-blank"></div>

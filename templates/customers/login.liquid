@@ -1,0 +1,60 @@
+<!-- /templates/customers/login.liquid -->
+{% layout "customers" %}
+
+
+
+{{ form.errors | default_errors }}
+
+<div class="login-area">
+    <div class="input-area">
+        {% form 'customer_login' %}
+            {{ form.errors | default_errors }}
+        <div class="input-group">
+            <input type="email" name="customer[email]" placeholder="name" />
+            <label for="customer_email">Email Address</label>
+        </div>
+    
+        <div class="input-group">
+            <input type="password" name="customer[password]" placeholder="name" />
+            <label for="customer_password">Password</label>
+        </div>
+    
+        <div class="login-btn">
+            {% assign l_text = 'customers.login.login' | t %}
+            {% render 'submit-btn', text: l_text %}
+        </div>
+        {% endform %}
+
+        <div class="newn-acc">
+            <div>
+                <div id="forgot-password">{{ 'customers.login.forgot' | t }}</div>
+            </div>
+
+            <div>
+                {{ 'customers.login.create' | t | customer_register_link  }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="pass-area">
+    <div class="input-area">
+        {% form 'recover_customer_password' %}
+        
+            <div class="input-group">
+                <input type="email" name="email" placeholder="name" />
+                <label for="customer_email">Email Address</label>
+            </div>
+        
+            <div class="login-btn">
+                {% assign p_text = 'customers.login.forgotpassword' | t %}
+                {% render 'submit-btn', text: p_text %}
+            </div>
+        
+        {% endform %}
+        <div class="newn-acc">
+            <div id="return-login">{{ 'customers.login.return' | t }}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<!-- /templates/customers/register.liquid -->
+
+{% layout "customers" %}
+
+
+
+
+<div class="login-area">
+    <div class="input-area">
+        {% form 'create_customer' %}
+        {{ form.errors | default_errors }}
+        <div class="input-group">
+            <input type="text" name="customer[last_name]" placeholder="name" />
+            <label for="last_name">{{ 'customers.register.lastname' | t}}</label>
+        </div>
+
+        <div class="input-group">
+            <input type="text" name="customer[first_name]" placeholder="name" />
+            <label for="first_name">{{ 'customers.register.firstname' | t}}</label>
+        </div>
+    
+        <div class="input-group">
+            <input type="email" name="customer[email]" placeholder="name" />
+            <label for="email">{{ 'customers.register.email' | t}}</label>
+        </div>
+        
+        <div class="input-group">
+            <input type="password" name="customer[password]" placeholder="name" />
+            <label for="password">{{ 'customers.register.password' | t}}</label>
+        </div>
+
+        <div class="login-btn">
+            {% assign signup = 'customers.register.register' | t %}
+            {% render 'submit-btn', text: signup %}
+        </div>
+        {% endform %}
+    </div>
+</div>
+
+
+
