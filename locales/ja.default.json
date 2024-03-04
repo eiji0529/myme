@@ -1,0 +1,171 @@
+{
+  "general": {
+    "404": {
+      "title": "404 Not found",
+      "subtext_html": "お探しのページは存在しません",
+      "return_top": "トップページへ戻る"
+    },
+    "search": {
+      "search": "カテゴリ、商品名で探す",
+      "reset": "検索ワードをクリアする"
+    },
+    "limit": {
+      "add_limit": "これ以上増やせません"
+    },
+    "move": {
+      "back": "戻る"
+    },
+    "overseas_notice": {
+      "title": "海外発送での注意事項",
+      "content": "海外発送によって発生する関税、及び手数料はご注文されたお客様のご負担となります。商品発送の際に関税のお支払いが必要な場合がございますので十分にご注意ください。"
+    }
+  },
+  "localization": {
+    "country_label": "国\/地域",
+    "language_label": "言語",
+    "update_language": "言語を更新する",
+    "update_country": "国\/地域を更新する"
+  },
+  "product": {
+    "detail": {
+      "title": "商品名",
+      "price": "値段",
+      "size": "サイズ",
+      "color": "色",
+      "qty": "数量",
+      "total": "合計",
+      "buy-btn": "カートに追加",
+      "buynow-btn": "今すぐ購入",
+      "select-notice": "選んでください",
+      "added_cart": "カートに追加しました",
+      "added_error": "追加できませんでした",
+      "go_cart": "カートを見る"
+    },
+    "description": {
+      "details": "DETAILS",
+      "sizeguide": "SIZE GUIDE"
+    },
+    "before_release": {
+      "buy-btn": "販売前商品です"
+    },
+    "remain": {
+      "remain": "残り",
+      "piece": "点"
+    }
+  },
+  "for_js": {
+    "out_of_stock": "在庫切れ"
+  },
+  "search": {
+    "no_result": "条件に一致する結果は見つかりませんでした。",
+    "re_search": "再検索する"
+  },
+  "footer": {
+    "company-name": "株式会社オールドワークス・フロンティア"
+  },
+  "cart": {
+    "item-detail": "商品詳細",
+    "option": "オプション",
+    "price": "価格",
+    "total_price": "商品合計額",
+    "subtotal": "小計",
+    "tax_display": "税額は購入画面で表示されます",
+    "shipping": "配送料",
+    "shipping_display": "購入画面で表示されます",
+    "checkout": "購入ページへ",
+    "empty": "カートは空です",
+    "continue": "買い物を続ける"
+  },
+  "news": {
+    "past_title": "過去のお知らせ一覧",
+    "to_detail": "詳細へ",
+    "prev": "前へ",
+    "next": "次へ",
+    "recent": "最近のお知らせ"
+  },
+  "customers": {
+    "login": {
+      "forgot": "パスワードを忘れた場合",
+      "create": "新規アカウント登録",
+      "login": "ログイン",
+      "forgotpassword": "再設定",
+      "return": "ログインページへ戻る"
+    },
+    "register": {
+      "lastname": "名字",
+      "firstname": "名前",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "password_confirm": "パスワード確認",
+      "register": "新規登録",
+      "reset": "パスワード再設定"
+    },
+    "myaccount": {
+      "title": "マイアカウント",
+      "edit_address": "住所を編集",
+      "shipping_title": "住所",
+      "myname": "氏名",
+      "mypost": "郵便番号",
+      "myaddress": "住所",
+      "history": "注文履歴"
+    },
+    "address": {
+      "address_title": "住所",
+      "new_address": "新しい住所を追加",
+      "last_name": "名字(必須項目)",
+      "first_name": "名前(必須項目)",
+      "country": "国\/地域(必須項目)",
+      "zipcode": "郵便番号",
+      "province": "都道府県",
+      "city": "市",
+      "address": "住所(必須項目)",
+      "buildings": "建物名など",
+      "phone": "電話番号",
+      "company": "会社名",
+      "default_check": "デフォルトの住所として設定する",
+      "default_title": "デフォルト",
+      "others_title": "その他",
+      "add": "追加",
+      "edit": "編集",
+      "update": "更新",
+      "cancel": "キャンセル",
+      "delete": "削除",
+      "required_text": "入力必須項目に未記入があります"
+    },
+    "account": {
+      "no_order": "まだ注文をしていません",
+      "to_detail": "詳細へ",
+      "date": "注文日",
+      "number": "注文番号",
+      "financial": "支払い状況",
+      "fulfillment": "発送状況",
+      "amount": "合計額"
+    },
+    "order": {
+      "title": "注文履歴詳細",
+      "number": "注文番号",
+      "date": "注文日",
+      "name": "品名",
+      "price": "価格",
+      "qty": "数量",
+      "line_amount": "合計",
+      "subtotal": "小計",
+      "shipping": "配送料",
+      "tax": "税",
+      "total": "合計",
+      "billing_address": "請求先住所",
+      "payment_status": "決済状況",
+      "shipping_address": "配送先住所",
+      "fulfillment_status": "発送状況"
+    }
+  },
+  "pages": {
+    "contact": {
+      "name": "お名前",
+      "email": "メールアドレス",
+      "message": "お問い合わせ内容",
+      "send": "送信",
+      "sended_html": "お問い合わせありがとうございます。<br>内容を確認いたしまして、担当者から折り返しご連絡をさせていただきます。"
+    }
+  }
+}
