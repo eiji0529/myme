@@ -5,14 +5,14 @@
       "settings": {
       }
     },
-    "search-result": {
-      "type": "search-result",
+    "main": {
+      "type": "product_before_release",
       "settings": {
       }
     }
   },
   "order": [
     "background",
-    "search-result"
+    "main"
   ]
 }

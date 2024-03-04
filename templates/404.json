@@ -1,10 +1,18 @@
 {
   "sections": {
+    "background": {
+      "type": "background",
+      "settings": {
+      }
+    },
     "main": {
-      "type": "main-404"
+      "type": "404",
+      "settings": {
+      }
     }
   },
   "order": [
+    "background",
     "main"
   ]
 }
