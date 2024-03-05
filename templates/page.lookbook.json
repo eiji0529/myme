@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "background": {
+      "type": "background",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "lookbook",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "background",
+    "main"
+  ]
+}
