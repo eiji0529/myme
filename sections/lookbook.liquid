@@ -1,14 +1,23 @@
 {{ 'css_lookbook.css' | asset_url | stylesheet_tag }}
 
 <div class="lookbook-container">
-    <div class="look-image">
-        <p>ここには写真が入ります</p>
+    <div class="top-container">
+        <div class="look-image">
+            <img class="lazyload" data-original="{{ collection.image | img_url: '900x' }}" alt="">
+        </div>
+        <p>2024(変数) AW collection</p>
     </div>
-    <p>2024 AW collection</p>
+    
     <div class="recent-look">
-        <div class="recent">a</div>
-        <div class="recent">b</div>
-        <div class="recent">c</div>
+        <div class="recent">
+            <img class="lazyload" data-original="{{ collection.image | img_url: '900x' }}" alt="">
+        </div>
+        <div class="recent">
+            <img class="lazyload" data-original="{{ collection.image | img_url: '900x' }}" alt="">
+        </div>
+        <div class="recent">
+            <img class="lazyload" data-original="{{ collection.image | img_url: '900x' }}" alt="">
+        </div>
     </div>
 </div>
 
