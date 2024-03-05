@@ -3,20 +3,25 @@
 <div class="lookbook-container">
     <div class="top-container">
         <div class="look-image">
-            <img class="lazyload" data-original="{{ collection.image | img_url: '900x' }}" alt="lookbook1">
+            {% assign lookbook_product = collections.lookbook.products.first %}
+            {% if lookbook_product %}
+                <img class="lazyload" src="{{ lookbook_product.featured_image.src }}" alt="{{ lookbook_product.title }}">
+            {% endif %}
         </div>
-        <p>2024(変数) AW collection</p>
+        <p>{{ '2024 AW collection' }}</p>
     </div>
     
     <div class="recent-look">
         <div class="recent">
-            <img class="lazyload" data-original="{{ collection.image | img_url: '900x' }}" alt="">
+            <img class="lazyload" src="{{ lookbook_product.featured_image.src }}" alt="{{ lookbook_product.title }}">
         </div>
         <div class="recent">
-            <img class="lazyload" data-original="{{ collection.image | img_url: '900x' }}" alt="">
+            <img class="lazyload" src="{{ lookbook_product.featured_image.src }}" alt="{{ lookbook_product.title }}">
+
         </div>
         <div class="recent">
-            <img class="lazyload" data-original="{{ collection.image | img_url: '900x' }}" alt="">
+            <img class="lazyload" src="{{ lookbook_product.featured_image.src }}" alt="{{ lookbook_product.title }}">
+
         </div>
     </div>
 </div>
