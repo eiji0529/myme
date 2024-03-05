@@ -3,10 +3,7 @@
 <div class="lookbook-container">
     <div class="top-container">
         <div class="look-image">
-            {% assign lookbook_product = collections.lookbook.products.first %}
-            {% if lookbook_product %}
-                <img class="lazyload" src="{{ lookbook_product.featured_image.src }}" alt="{{ lookbook_product.title }}">
-            {% endif %}
+            <img class="lazyload" src="{{ lookbook_product.featured_image.src }}" alt="{{ lookbook_product.title }}">
         </div>
         <p>{{ '2024 AW collection' }}</p>
     </div>
