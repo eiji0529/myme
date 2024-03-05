@@ -9,17 +9,10 @@
       "type": "lookbook",
       "settings": {
       }
-    },
-    "top_influencerlist_7Jix3p": {
-      "type": "top-influencerlist",
-      "settings": {
-        "title": "テキストが入ります。"
-      }
     }
   },
   "order": [
     "background",
-    "main",
-    "top_influencerlist_7Jix3p"
+    "main"
   ]
 }
