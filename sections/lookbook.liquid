@@ -3,7 +3,9 @@
 <div class="lookbook-container">
     <div class="top-container">
         <div class="look-image">
-            <img src="{{ collections['new-lookbook'].image | img_url: 'large' }}">
+            <a href="/blogs/news/{{ 'new-lookbook-detail' }}">
+                <img src="{{ collections['new-lookbook'].image | img_url: 'large' }}">
+            </a>
         </div>
         <p>{{ '2024 AW collection' }}</p>
     </div>
