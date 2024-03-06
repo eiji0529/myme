@@ -7,17 +7,19 @@
       <div class="news-image"><img src="{{ article.image.src | img_url: '900x' }}"></div>
     {% endif %}
     <h2>lookbook</h2>
-    <div class="news-move">
-      {%- if blog.previous_article -%}
-        <a href="{{ blog.previous_article }}">&larr;{{ 'news.prev' | t }}</a>
-      {%- else -%}
-        <div></div>
-      {%- endif -%}
-      {%- if blog.next_article -%}
-      <a href="{{ blog.next_article }}">{{ 'news.next' | t }}&rarr;</a>
-      {%- else -%}
-        <div></div>
-      {%- endif -%}
-    </div>
+  </div>
+
+  <div class="newers sp-hidden">
+    <div>{{ 'news.recent' | t }}</div>
+    {% paginate blog.articles by 10 %}
+      <ul class="newer-list">
+        {% for article in blog.articles %}
+          <li>
+            <div><a href="{{ article.url }}">{{ article.created_at | date: "%Y/%m/%d" }}</a></div>
+            <div class="newer-title"><a href="{{ article.url }}">{{ article.title }}</a></div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endpaginate %}
   </div>
 </div>
