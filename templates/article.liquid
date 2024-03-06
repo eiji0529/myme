@@ -1,11 +1,13 @@
+
+
 {{ 'css_blog.css' | asset_url | stylesheet_tag }}
 
 <div class="news-separate">
   <div class="news-detail">
     <div>{{ article.created_at | date: "%Y/%m/%d" }}</div>
-    {% for image in article.images %}
-      <div class="news-image"><img src="{{ image.src | img_url: '900x' }}"></div>
-    {% endfor %}
+    {% if article.image.src %}
+      <div class="news-image"><img src="{{ article.image.src | img_url: '900x' }}"></div>
+    {% endif %}
     <h2>{{ article.title }}</h2>
     <p>{{ article.content }}</p>
     <div class="news-move">
@@ -15,7 +17,7 @@
         <div></div>
       {%- endif -%}
       {%- if blog.next_article -%}
-        <a href="{{ blog.next_article }}">{{ 'news.next' | t }}&rarr;</a>
+      <a href="{{ blog.next_article }}">{{ 'news.next' | t }}&rarr;</a>
       {%- else -%}
         <div></div>
       {%- endif -%}
