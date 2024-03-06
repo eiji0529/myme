@@ -1,8 +1,8 @@
 
 {{ 'css_blog.lookbook.css' | asset_url | stylesheet_tag }}
 
-<div class="news-separate">
-  <div class="news-detail">
+<div class="lookbook-detail-container">
+  <div class="look-image">
     {% if article.image.src %}
       <div class="news-image"><img src="{{ article.image.src | img_url: '900x' }}"></div>
     {% endif %}
