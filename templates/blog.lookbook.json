@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "background": {
+      "type": "background",
+      "settings": {
+      }
+    },
+    "blog": {
+      "type": "blog",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "background",
+    "blog"
+  ]
+}
