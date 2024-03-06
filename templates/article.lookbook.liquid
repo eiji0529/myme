@@ -7,5 +7,17 @@
       <div class="news-image"><img src="{{ article.image.src | img_url: '900x' }}"></div>
     {% endif %}
     <h2>lookbook</h2>
+    <div class="news-move">
+      {%- if blog.previous_article -%}
+        <a href="{{ blog.previous_article }}">&larr;{{ 'news.prev' | t }}</a>
+      {%- else -%}
+        <div></div>
+      {%- endif -%}
+      {%- if blog.next_article -%}
+      <a href="{{ blog.next_article }}">{{ 'news.next' | t }}&rarr;</a>
+      {%- else -%}
+        <div></div>
+      {%- endif -%}
+    </div>
   </div>
 </div>
