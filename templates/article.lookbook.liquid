@@ -3,7 +3,6 @@
 
 <div class="news-separate">
   <div class="news-detail">
-    <div>{{ article.created_at | date: "%Y/%m/%d" }}</div>
     {% if article.image.src %}
       <div class="news-image"><img src="{{ article.image.src | img_url: '900x' }}"></div>
     {% endif %}
