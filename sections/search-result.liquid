@@ -12,8 +12,10 @@
     <!-- 商品ページの表示コード -->
     <ul class="item-list">
       {% for item in search.results %}
-        {% if item.object_type == "product" %}
-          <!--show product details here -->
+        {% if item.object_type == "product" and item.tags contains 'lookbook' %}
+          <!-- 'lookbook' タグを持つ商品は除外 -->
+        {% else %}
+          <!-- 'lookbook' タグを持たない商品は表示 -->
           <li class="item-base delighter" data-delighter>
               <div class="item-img">
                   <a href="{{ item.url }}">
