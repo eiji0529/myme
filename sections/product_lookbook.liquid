@@ -1,0 +1,16 @@
+{{ 'css_product.css' | asset_url | stylesheet_tag }}
+{{ 'css_snipets.css' | asset_url | stylesheet_tag }}
+
+<section id="product-page">
+  <div id="product-area">
+    <div class="img-area swiper-container swiper">
+      <ul class="swiper-wrapper">
+        {% for image in product.images %}
+          <li class="swiper-slide">
+            <img class="lazyload" data-original="{{ image.src | product_img_url: '900x' }}" loading="lazy">
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

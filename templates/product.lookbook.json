@@ -6,7 +6,7 @@
       }
     },
     "main": {
-      "type": "product",
+      "type": "product_lookbook",
       "settings": {
       }
     }

@@ -1,9 +1,34 @@
 {{ 'css_lookbook.css' | asset_url | stylesheet_tag }}
 
-<div class="lookbook-container">
+{% comment %} <div class="lookbook-container">
     <div class="top-container">
         <div class="look-image">
             <a href="/blogs/lookbook/{{ 'new-lookbook-detail' }}">
+                <img src="{{ collections['new-lookbook'].image | img_url: 'large' }}">
+            </a>
+        </div>
+        <p>{{ '2024 AW collection' }}</p>
+    </div>
+    
+    <div class="recent-look">
+        <div class="recent">
+            <a href="/blogs/lookbook/{{ 'recent-lookbook2' }}">
+                <img src="{{ collections['look2'].image | img_url: 'large' }}">
+            </a>
+        </div>
+        <div class="recent">
+            <img src="{{ collections['look3'].image | img_url: 'large' }}">
+        </div>
+        <div class="recent">
+            <img src="{{ collections['look4'].image | img_url: 'large' }}">
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<div class="lookbook-container">
+    <div class="top-container">
+        <div class="look-image">
+            <a href="/products/{{ 'lookbook-1' }}">
                 <img src="{{ collections['new-lookbook'].image | img_url: 'large' }}">
             </a>
         </div>
