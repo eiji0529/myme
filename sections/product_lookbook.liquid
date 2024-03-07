@@ -1,16 +1,20 @@
-{{ 'css_product.css' | asset_url | stylesheet_tag }}
-{{ 'css_snipets.css' | asset_url | stylesheet_tag }}
+{{ 'css_lookbook-product.css' | asset_url | stylesheet_tag }}
 
-<section id="product-page">
-  <div id="product-area">
-    <div class="img-area swiper-container swiper">
-      <ul class="swiper-wrapper">
-        {% for image in product.images %}
-          <li class="swiper-slide">
-            <img class="lazyload" data-original="{{ image.src | product_img_url: '900x' }}" loading="lazy">
-          </li>
-        {% endfor %}
-      </ul>
+<section id="lookbook-product-page">
+    <div class="lookbook-product-area">
+        <div class="flex-container">
+            <img class="lazyload" data-original="{{ product.images[0].src | product_img_url: 'large' }}" loading="lazy">
+            <div class="lookbook-right-1">
+                <img class="lazyload" data-original="{{ product.images[1].src | product_img_url: 'large' }}" loading="lazy">
+                <img class="lazyload" data-original="{{ product.images[2].src | product_img_url: 'large' }}" loading="lazy">
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="lookbook-left-1">
+                <img class="lazyload" data-original="{{ product.images[3].src | product_img_url: 'large' }}" loading="lazy">
+                <img class="lazyload" data-original="{{ product.images[4].src | product_img_url: 'large' }}" loading="lazy">
+            </div>
+            <img class="lazyload" data-original="{{ product.images[5].src | product_img_url: 'large' }}" loading="lazy">
+        </div>
     </div>
-  </div>
 </section>
