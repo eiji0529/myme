@@ -1,22 +1,19 @@
 #lookbook-product-page {
     width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 40px;
 }
 
 .lookbook-product-area {
-    margin-top: 3%;
-    text-align:center;
+    text-align: center;
 }
 
 #mumu-img {
-    width: 150px;
+    width: 15%;
     height: auto;
     display: block;
-    margin: 0 auto 10px;
-}
-
-.lookbook-product-area p {
-    color:white;
-    font-size:40px;
+    margin: 5% auto 3% auto;
 }
 
 #look {
@@ -24,8 +21,6 @@
     display: flex;
     width: 80%;
     margin: 0 auto 2% auto;
-    justify-content: space-between;
-    background-color:navy;
 }
 
 #look img {
@@ -34,45 +29,37 @@
 }
 
 .lookbook1 {
-    height:600px;
+    height:100%;
 }
 
 .lookbook1-left {
-    width:40%;
-    height:100%;
-    background-color:blue;
-    margin-right:1%;
+    width:42%;
 }
 
 .lookbook1-center {
-    width:30%;
-    height:100%;
+    width:28%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    margin-left:1%;
     margin-right:1%;
 }
 
 .lookbook1-center-1 {
-    width:100%;
-    height: 39%;
-    background-color: pink;
+    width: 100%;
+    margin-bottom:3%;
 }
 
 .lookbook1-center-2 {
-    width:100%;
-    height: 59%;
-    background-color: pink;
+    width: 100%;
 }
 
 .lookbook1-right {
-    background-color:green;
     width:30%;
-    height:100%;
 }
 
 .lookbook2 {
-    background-color:blue;
-    height:450px;
+    height:100%;
 }
 
 .lookbook2-left {
@@ -80,39 +67,39 @@
 }
 
 .lookbook2-center {
-    width:45%;
+    width:40%;
     margin-left:1%;
     margin-right:1%;
 }
 
 .lookbook2-right {
-    width:25%;
+    width:30%;
 }
 
 .lookbook3 {
-    background-color:yellow;
-    height:600px;
+    height:100%;
 }
 
 .lookbook3-left {
-    width: 40%;
+    width: 35%;
 }
 
 .lookbook3-center {
-    width:30%;
+    width:35%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-right:1%;
     margin-left:1%;
+    margin-right:1%;
 }
 
 .lookbook3-center-1 {
-    height:48%;
+    height:54%;
+    margin-bottom:3%;
 }
 
 .lookbook3-center-2 {
-    height:48%;
+    height:46%;
 }
 
 .lookbook3-right {
@@ -120,7 +107,7 @@
 }
 
 .lookbook4 {
-    background-color:purple;
+    height:100%;
 }
 
 .lookbook4-left {
@@ -128,6 +115,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-right:1%;
+}
+
+.lookbook4-left-1 {
+    margin-bottom:2%;
 }
 
 .lookbook4-right {
@@ -135,19 +127,77 @@
 }
 
 .lookbook5 {
-    background-color:orange;
+    height:100%;
 }
 
 .lookbook5-left {
-    width:50%;
+    width:53%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right:1%;
+}
+
+.lookbook5-right {
+    width:47%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.lookbook5-right {
-    width:50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.lookbook5-left-1 {
+    height:40%;
+    margin-bottom:2%;
+}
+
+.lookbook5-left-2 {
+    height:60%;
+}
+
+
+.lookbook5-right-1 {
+    height:60%;
+    margin-bottom:2%;
+}
+
+.lookbook-right-2 {
+    height:40%;
+}
+
+.lookbook6 {
+    height:100%;
+}
+
+.lookbook6-left {
+    width:30%;
+}
+
+.lookbook6-center {
+    width:40%;
+    margin-right:1%;
+    margin-left:1%;
+}
+
+.lookbook6-right {
+    width:30%;
+}
+
+
+@media screen and (max-width:900px) {
+
+    #lookbook-product-page {
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+    }
+
+    #mumu-img {
+        width: 20%;
+        height: auto;
+        display: block;
+        margin: 5% auto 3% auto;
+    }
+    
+
 }
