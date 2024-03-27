@@ -5,10 +5,6 @@
     font-size: 40px;
 }
 
-.lookbook-product-area {
-    text-align: center;
-}
-
 #mumu-img {
     width: 15%;
     height: auto;
@@ -16,23 +12,27 @@
     margin: 5% auto 3% auto;
 }
 
-#look {
+.lookbook-product-area {
+    text-align: center;
+}
+
+.look {
     white-space: nowrap;
     display: flex;
     width: 80%;
     margin: 0 auto 2% auto;
 }
 
-#look img {
+.look img {
     width: 100%;
     height:100%;
 }
 
-.lookbook1 {
-    height:100%;
+#lookbook1 {
+    height:50%;
 }
 
-.lookbook1-left {
+#lookbook-1 {
     width:42%;
 }
 
@@ -45,18 +45,18 @@
     margin-right:1%;
 }
 
-.lookbook1-center-1 {
+#lookbook-2 {
     width: 100%;
     height: 45%;
     margin-bottom:3%;
 }
 
-.lookbook1-center-2 {
+#lookbook-3 {
     width: 100%;
     height: 55%;
 }
 
-.lookbook1-right {
+#lookbook-4 {
     width:30%;
 }
 
@@ -64,17 +64,17 @@
     height:100%;
 }
 
-.lookbook2-left {
+#lookbook-5 {
     width:30%;
 }
 
-.lookbook2-center {
+#lookbook-6 {
     width:40%;
     margin-left:1%;
     margin-right:1%;
 }
 
-.lookbook2-right {
+#lookbook-7 {
     width:30%;
 }
 
@@ -82,7 +82,7 @@
     height:100%;
 }
 
-.lookbook3-left {
+#lookbook-8 {
     width: 35%;
 }
 
@@ -95,16 +95,16 @@
     margin-right:1%;
 }
 
-.lookbook3-center-1 {
+#lookbook-9 {
     height:54%;
     margin-bottom:3%;
 }
 
-.lookbook3-center-2 {
+#lookbook-10 {
     height:46%;
 }
 
-.lookbook3-right {
+#lookbook-11 {
     width:30%;
 }
 
@@ -120,11 +120,15 @@
     margin-right:1%;
 }
 
-.lookbook4-left-1 {
+#lookbook-12{
     margin-bottom:2%;
 }
 
-.lookbook4-right {
+#lookbook-13 {
+
+}
+
+#lookbook-14 {
     width:50%;
 }
 
@@ -147,22 +151,22 @@
     justify-content: space-between;
 }
 
-.lookbook5-left-1 {
+#lookbook-15 {
     height:40%;
     margin-bottom:2%;
 }
 
-.lookbook5-left-2 {
+#lookbook-16 {
     height:60%;
 }
 
 
-.lookbook5-right-1 {
+#lookbook-17 {
     height:60%;
     margin-bottom:2%;
 }
 
-.lookbook-right-2 {
+#lookbook-18 {
     height:40%;
 }
 
@@ -170,17 +174,17 @@
     height:100%;
 }
 
-.lookbook6-left {
+#lookbook-19 {
     width:30%;
 }
 
-.lookbook6-center {
+#lookbook-20 {
     width:40%;
     margin-right:1%;
     margin-left:1%;
 }
 
-.lookbook6-right {
+#lookbook-21 {
     width:30%;
 }
 
@@ -201,5 +205,18 @@
         margin: 5% auto 3% auto;
     }
     
-
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.look {
+    animation: fadeIn 1s ease-out forwards;
+}
+

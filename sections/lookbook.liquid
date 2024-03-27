@@ -1,31 +1,7 @@
 {{ 'css_lookbook.css' | asset_url | stylesheet_tag }}
 
-{% comment %} <div class="lookbook-container">
-    <div class="top-container">
-        <div class="look-image">
-            <a href="/blogs/lookbook/{{ 'new-lookbook-detail' }}">
-                <img src="{{ collections['new-lookbook'].image | img_url: 'large' }}">
-            </a>
-        </div>
-        <p>{{ '2024 AW collection' }}</p>
-    </div>
-    
-    <div class="recent-look">
-        <div class="recent">
-            <a href="/blogs/lookbook/{{ 'recent-lookbook2' }}">
-                <img src="{{ collections['look2'].image | img_url: 'large' }}">
-            </a>
-        </div>
-        <div class="recent">
-            <img src="{{ collections['look3'].image | img_url: 'large' }}">
-        </div>
-        <div class="recent">
-            <img src="{{ collections['look4'].image | img_url: 'large' }}">
-        </div>
-    </div>
-</div> {% endcomment %}
-
 <div class="lookbook-container">
+
     <div class="top-container">
         <div class="look-image">
             {% assign product = collections.all.products | where: 'handle', 'lookbook-1' | first %}
@@ -34,18 +10,18 @@
                     <img src="{{ product.images.first.src | product_img_url: 'original' }}" alt="{{ product.title }}">
                 </a>
             {% endif %}
+            <p>{{ '2024 AW collection' }}</p>
         </div>
-        <p>{{ '2024 AW collection' }}</p>
     </div>
     
-    <div class="recent-look">
+    <div class="bottom-container">
         <div class="recent">
-            {% assign product = collections.all.products | where: 'handle', 'lookbook-2' | first %}
-            {% if product %}
-                <a href="/products/{{ product.handle }}">
-                    <img src="{{ product.images.first.src | product_img_url: 'original' }}" alt="{{ product.title }}">
-                </a>
-            {% endif %}
+        {% assign product = collections.all.products | where: 'handle', 'lookbook-2' | first %}
+        {% if product %}
+            <a href="/products/{{ product.handle }}">
+                <img src="{{ product.images.first.src | product_img_url: 'original' }}" alt="{{ product.title }}">
+            </a>
+        {% endif %}
         </div>
         <div class="recent">
             {% assign product = collections.all.products | where: 'handle', 'lookbook-3' | first %}
@@ -62,6 +38,7 @@
                     <img src="{{ product.images.first.src | product_img_url: 'original' }}" alt="{{ product.title }}">
                 </a>
             {% endif %}
+            
         </div>
     </div>
 </div>
