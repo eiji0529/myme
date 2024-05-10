@@ -36,4 +36,62 @@ $(function () {
             }
         }
     });
+
+
+// トップページのスライダー
+    $(window).on('load resize', function () {
+        var item_swiper;
+        var w = $(window).width();
+        if (w <= 900) {
+            if (item_swiper) {
+                return;
+            } else {
+                //swiper 900以下で起動
+                item_swiper = new Swiper('.item_swiper', {
+                    freeMode: {
+                        enabled: true,
+                        sticky: true,
+                        momentumratio: 2,
+                        momentumbounce: false
+                    },
+                    loop: true,
+                    slidesPerView: 3,
+                    spaceBetween: 2,
+                    lazyPreloadPrevNext: 1,
+                    // 前後の矢印
+                    navigation: {
+                        nextEl: ".swiper-next",
+                        prevEl: ".swiper-prev",
+                    }
+                });
+            }
+        } else {
+            if (item_swiper) {
+                return;
+            } else {
+                item_swiper = new Swiper('.item_swiper', {
+                    freeMode: {
+                        enabled: true,
+                        sticky: true,
+                        momentumratio: 3,
+                        momentumbounce: false
+                    },
+                    loop: true,
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                    lazyPreloadPrevNext: 1,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        type: "bullets",
+                        clickable: false,
+                    },
+                    // 前後の矢印
+                    navigation: {
+                        nextEl: ".swiper-next",
+                        prevEl: ".swiper-prev",
+                    }
+                });
+            }
+        }
+    });
 }); 

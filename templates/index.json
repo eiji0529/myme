@@ -15,8 +15,18 @@
       "settings": {
       }
     },
-    "main": {
-      "type": "top-influencerlist",
+    "new_item": {
+      "type": "new-item-slider",
+      "settings": {
+      }
+    },
+    "restock_item": {
+      "type": "restock-item-slider",
+      "settings": {
+      }
+    },
+    "topic": {
+      "type": "topic",
       "settings": {
       }
     }
@@ -25,6 +35,8 @@
     "popup",
     "top-image",
     "background",
-    "main"
+    "new_item",
+    "restock_item",
+    "topic"
   ]
 }

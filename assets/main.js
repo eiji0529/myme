@@ -140,7 +140,7 @@ $(function() {
 
   //window.sessionStorage.clear(); // セッションを全削除
   // 海外発送の注意表示
-  if (window.localStorage.getItem(["is_os_n"]) != "close") {
+  if (window.sessionStorage.getItem(["is_os_n"]) != "close") {
     $('.overseas').fadeIn(500);
   }
 });
@@ -152,8 +152,11 @@ $('#popup-container').fadeOut(200);
 $('.os-head-circle').on('click', function() {
   var key = "is_os_n";
   $('.overseas').fadeOut(300);
-  // 状態をセッションへ保存
-  window.localStorage.setItem([key],["close"]);
+
+  if ($('#next_stop').prop('checked')){
+    // 状態をセッションへ保存
+    window.sessionStorage.setItem([key],["close"]);
+  }
 })
 
 // ************ */

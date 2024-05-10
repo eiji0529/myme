@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "background": {
+      "type": "background",
+      "settings": {
+      }
+    },
+    "bland_logo": {
+      "type": "about-bland-logo",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "background",
+    "bland_logo"
+  ]
+}

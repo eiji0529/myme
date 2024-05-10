@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
 
-      // できあがった新しいスペースを、末尾に追加する。
+      // できた新しいスペースを、末尾に追加する。
       document.getElementById('lookbook-product').appendChild(clonedLookbookLayout);
     }
   }
