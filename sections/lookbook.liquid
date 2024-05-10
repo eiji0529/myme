@@ -13,7 +13,7 @@
             <p>{{ '2024 AW collection' }}</p>
         </div>
     </div>
-    
+
     <div class="bottom-container">
         <div class="recent">
         {% assign product = collections.all.products | where: 'handle', 'lookbook-2' | first %}
@@ -38,7 +38,7 @@
                     <img src="{{ product.images.first.src | product_img_url: 'original' }}" alt="{{ product.title }}">
                 </a>
             {% endif %}
-            
+
         </div>
     </div>
 </div>
