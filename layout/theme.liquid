@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>{{ page_title }}</title>
-      <!-- Favicon -->
+      <!-- Favicon 
       <link rel="icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon">
       <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon">
+      -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="{{ page_description | escape }}">
@@ -22,7 +23,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }} <!-- swiper -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  {{ 'swiper-bundle.min.js' | asset_url | script_tag }}
 
   {{ 'jquery.lazyload.min.js' | asset_url | script_tag }} <!-- Lazy load -->
   {{ 'delighters.min.js' | asset_url | script_tag }} <!-- delighters -->
@@ -45,7 +46,6 @@
 
 {% endif %}
 
-  <script>console.log("temp", "{{ template }}")</script>
 </head>
 
 <body>
@@ -71,11 +71,15 @@
     <div id="m-d">{{ content_for_layout }}</div>
   </main>
   
+  {% comment %}
+  ページ下部に海外発送注意の表示
   <div class="overseas">
     <div class="os-head"><span class="os-head-circle"></span></div>
     <h3>{{ 'general.overseas_notice.title' | t }}</h3>
     <p>{{ 'general.overseas_notice.content' | t }}</p>
+    <p><input type="checkbox" id="next_stop">{{ 'general.overseas_notice.next_stop' | t }}</p>
   </div>
+{% endcomment %}
   
   {% section 'footer' %}
 
@@ -89,6 +93,9 @@
 <script>
   var add_limit = "{{ 'general.limit.add_limit'| t }}";
 </script>
+{{ 'swiper_control.js' | asset_url | script_tag }}
+
+{{ 'search_btn.js' | asset_url | script_tag }}
 {{ 'header.js' | asset_url | script_tag }}
 {{ 'main.js' | asset_url | script_tag }}
 

@@ -1,72 +1,59 @@
 
-<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-  <symbol id="icon-user" viewBox="0 0 18 18">
-	<path class="st0" d="M9,0.898c-2.233,0-4.05,1.818-4.05,4.053c0,2.233,1.816,4.051,4.05,4.051c2.234,0,4.052-1.817,4.052-4.051
-		C13.052,2.717,11.234,0.898,9,0.898z M9,9.901c-2.73,0-4.951-2.221-4.951-4.95C4.049,2.22,6.27-0.001,9-0.001
-		s4.951,2.221,4.951,4.952C13.951,7.681,11.73,9.901,9,9.901z"/>
-	<path class="st0" d="M9,11.701c-3.139,0-5.454,0.859-6.698,2.481c-0.933,1.217-0.953,2.461-0.953,2.471
-		c0,0.248,0.202,0.449,0.451,0.449h14.402c0.248,0,0.45-0.201,0.45-0.451c0-0.008-0.021-1.252-0.953-2.469
-		C14.455,12.561,12.14,11.701,9,11.701z M16.202,18.001H1.8c-0.746,0-1.352-0.604-1.352-1.35c0-0.061,0.013-1.516,1.103-2.97
-		c0.634-0.846,1.503-1.518,2.583-1.996C5.452,11.099,7.089,10.802,9,10.802s3.549,0.297,4.866,0.884
-		c1.08,0.479,1.949,1.15,2.584,1.996c1.091,1.454,1.102,2.909,1.102,2.97C17.552,17.397,16.946,18.001,16.202,18.001z"/>
-  </symbol>
-</svg>
+
+
 
 
 <header id="header">
-  <div class="nav-menu">
-    <!-- ハンバーガーメニュー -->
-    <a class="menu-trigger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </a>
-
-    {% assign sub_mnum = 1 %}
-
-    <div id="head-nav">
-      <ul class="hbar">
-        {% for link in linklists.main-menu.links %}
-          {% assign sub_list_handle = link.title | handleize %}
-          {% if linklists[sub_list_handle].links != blank %}
-            <li class="mbar">
-              <div class="m-title"><span>{{ link.title }}</span></div>
-              <!-- サブフォルダ -->
-              <ul class="sub-menu">
-                {% for childlink in linklists[sub_list_handle].links %}
-                  <li class="sub-mbar">
-                    <div class="sub-menu-title">{{ childlink.title | link_to: childlink.url }}</div>
-                    {% assign sub_sub_list_handle = childlink.title | handleize %}
-                    {% if linklists[sub_sub_list_handle].links != blank %}
-                      {% for grandchildlink in linklists[sub_sub_list_handle].links %}
-                        <div class="sub-sub-menu">
-                          <a href="{{ grandchildlink.url }}">> {{ grandchildlink.title }}</a>
-                        </div>
-                      {% endfor %}
-                    {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
-            </li>
-          {% else %}
-          <li class="mbar">
-              <div class="m-title">
-                <a href="{{ link.url }}">
-                  <div>{{ link.title }}</div>
-                </a>
-              </div>
-          </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+  <div class="head-logo">
+    {% if section.settings.head-logo != blank %}
+      <div class="brand-logo">
+        <a href="/"><img src="{{ section.settings.head-logo | img_url: '90x' }}" alt="{{ shop.name }}"></a>
+      </div>
+    {% else %}
+    <div class="brand-logo">
+      <a href="/"><img src="{{ 'brandlogo.png' | asset_img_url: '90x' }}" alt="{{ shop.name }}"></a>
     </div>
+    {% endif %}
   </div>
+  
 
+  <div class="head-menu">
+    <div class="menu-list-btn">MENU<span class="menu-mark"><span></span><span></span></span></div>
+    <ul class="head-main-menu-list">
+      {% for main_menu in linklists.main-menu.links %}
+      {% assign sub_menu = main_menu.title | handleize %}
+        {% if main_menu.url %}
+          <li class="head-main-menu">
+            <a href="{{ main_menu.url }}" class="main-menu-name">{{ main_menu.title }}</a>
+            <ul class="head-sub-menu-list">
 
-  <div class="shop-name">
-    <a href="{{ routes.root_url }}">
-      <img src="{{ 'brandlogo.png' | asset_img_url: '110x' }}" alt="{{ shop.name }}">
-    </a>
+              {% for childlink in linklists[sub_menu].links %}
+                <li class="head-sub-menu">
+                  <div class="sub-menu-title">{{ childlink.title | link_to: childlink.url }}
+                    {% assign sub_sub_list_handle = childlink.title | handleize %}
+
+                    {% if linklists[sub_sub_list_handle].links != blank %}
+                      <div class="s2-menu">
+                        {% for grandchildlink in linklists[sub_sub_list_handle].links %}
+                          <div class="s2-menu-item">
+                            <a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+        <li class="head-main-menu">
+          <div class="main-menu-name">{{ main_menu.title }}</div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
   </div>
 
 
@@ -78,6 +65,9 @@
       {% render 'cart-icon' %}
     </div>
     <div class="head-icon sign-btn">
+      {% render 'user-icon' %}
+
+  {% comment %}
       {% if customer %}
         <div class="customer-icons">
           <div class="user-icon">
@@ -92,15 +82,271 @@
       {% else %}
       <div class="account-btn"><span>{{ 'log in ' | customer_login_link }}</span></div>
       {% endif %}
+  {% endcomment %}
     </div>
     
     <div class="head-icon language-switcher">
       {% render 'select-language' %}
     </div>
-
-  </div>
-
-  <div class="head-icon sp-language-switcher">
-    {% render 'sp-select-language' %}
   </div>
 </header>
+
+
+
+
+
+{% comment %}
+
+{%- style -%}
+.head-user .cart-icon.in-cart .in-cart-check {
+  background-color: {{ section.settings.cart_check }};
+    span {
+                background-color: {{ section.settings.cart_check_mark }};
+    }
+}
+{% endstyle %}
+
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-hidden">
+  <symbol id="icon-search" viewBox="0 0 25 25">
+		<path fill="none" d="
+		M18.541,9.487c0,4.655-3.773,8.426-8.425,8.426l0,0c-4.653,0-8.427-3.771-8.427-8.426l0,0c0-4.654,3.773-8.426,8.427-8.426l0,0
+		C14.768,1.062,18.541,4.833,18.541,9.487L18.541,9.487z"/>
+		<line fill="none" x1="15.408" y1="16.037" x2="23.311" y2="23.938"/>
+  </symbol>
+  <symbol id="icon-user" viewBox="0 0 25 25">
+		<path fill="none" d="
+      M 19 7 c 0 3.36 -2.727 6.084 -6.083 6.084 c -3.362 0 -6.086 -2.724 -6.086 -6.084 c 0 -3.361 2.724 -6.085 6.086 -6.085 C 16.36 1 19 3.724 19 7 z"/>
+		<path fill="none" d="
+      M 23 24 c 0 -4 -4.195 -8.791 -10.009 -8.791 c -5.805 0 -9.991 4.791 -9.991 8.791 H 23.009 z"/>
+  </symbol>
+  <symbol id="icon-cart" viewBox="0 0 25 25">
+		<path fill="none" d="
+		M10.936,22.215c0,0.988-0.803,1.789-1.79,1.789l0,0c-0.988,0-1.789-0.801-1.789-1.789l0,0c0-0.988,0.801-1.789,1.789-1.789l0,0
+		C10.133,20.426,10.936,21.227,10.936,22.215L10.936,22.215z"/>
+		<path fill="none" d="
+		M22.107,22.215c0,0.988-0.803,1.789-1.789,1.789l0,0c-0.988,0-1.789-0.801-1.789-1.789l0,0c0-0.988,0.801-1.789,1.789-1.789l0,0
+		C21.305,20.426,22.107,21.227,22.107,22.215L22.107,22.215z"/>
+		<polyline fill="none" points="
+		0.524,0.997 3.16,0.997 7.584,18.828 22.195,18.828 	"/>
+		<polyline fill="none" points="
+		4.009,4.259 24.475,4.259 21.971,15.521 6.826,15.521 	"/>
+  </symbol>
+  <symbol id="icon-logout" viewBox="0 0 25 25">
+		<polygon fill="none" points="
+		0.605,21.351 11.759,24.11 11.759,4.125 0.605,1.365 	"/>
+		<polyline fill="none" points="
+		4.261,0.89 18.467,0.89 18.467,8.443 	"/>
+		<polyline fill="none" points="
+		11.947,22.112 18.467,22.112 18.467,14.558 	"/>
+		<line fill="none" x1="24.031" y1="11.5" x2="13.791" y2="11.5"/>
+    <line fill="none" x1="20.48" y1="7.924" x2="24.395" y2="11.5"/>
+    <line fill="none" x1="24.395" y1="11.5" x2="20.48" y2="15.077"/>
+		<circle fill="none" cx="9.246" cy="14.117" r="0.919"/>
+  </symbol>
+  <symbol id="icon-login" viewBox="0 0 25 25">
+		<line fill="none" x1="11.079" y1="11.5" x2="0.837" y2="11.5"/>
+    <line fill="none" x1="8.027" y1="8.424" x2="11.442" y2="11.5"/>
+    <line fill="none" x1="11.442" y1="11.5" x2="8.027" y2="14.577"/>
+		<polygon fill="none" points="
+		24.162,21.351 13.008,24.11 13.008,4.125 24.162,1.365 	"/>
+		<polyline fill="none" points="
+		20.506,0.89 6.301,0.89 6.301,8.443 	"/>
+		<polyline fill="none" points="
+		12.821,22.112 6.301,22.112 6.301,14.558 	"/>
+		<circle fill="none" cx="15.521" cy="14.117" r="0.92"/>
+  </symbol>
+</svg>
+
+
+<header id="header">
+  <div class="head-logo">
+    {% if section.settings.head-logo != blank %}
+      <div class="brand-logo">
+        <a href="/"><img src="{{ section.settings.head-logo | img_url: 'small' }}"></a>
+      </div>
+    {% else %}
+    <div class="brand-logo">
+      <a href="/"><img src="{{ 'brandlogo.png' | asset_img_url: '90x' }}" alt="{{ shop.name }}"></a>
+    </div>
+    {% endif %}
+    {% if section.settings.head-text != blank %}
+      <div class="brand-text">
+        <a href="/">{{ section.settings.head-text }}</a>
+      </div>
+    {% endif %}
+  </div>
+  
+  <div class="head-menu">
+    <div class="menu-list-btn">MENU<span class="menu-mark"><span></span><span></span></span></div>
+    <ul class="head-main-menu-list">
+      {% for main_menu in linklists.main-menu.links %}
+      {% assign sub_menu = main_menu.title | handleize %}
+        {% if main_menu.url %}
+          <li class="head-main-menu">
+            <a href="{{ main_menu.url }}" class="main-menu-name">{{ main_menu.title }}</a>
+            <ul class="head-sub-menu-list">
+              {% for sublink in linklists[sub_menu].links %}
+                <li class="head-sub-menu">
+                  <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+        <li class="head-main-menu">
+          <div class="main-menu-name">{{ main_menu.title }}</div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="head-user">
+    <div class="head-icons">
+      <a href="#"class="search-icon">
+        <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-search">
+        </svg>
+      </a>
+      {% render 'search-box' %}
+    </div>
+    <div class="head-icons user-icon head-main-menu">
+      <a href="#" class="user-icon-link">
+        <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-user">
+        </svg>
+      </a>
+      <ul class="user-menu head-sub-menu-list">
+        {% if customer %}
+          <li class="head-sub-menu">
+            <a href="{{ routes.account_url }}">マイページ</a>
+          </li>
+          <li class="head-sub-menu">
+            <a href="{{ routes.cart_url }}">ショッピングカート</a>
+          </li>
+          <li class="head-sub-menu">
+            <a href="{{ routes.account_logout_url }}">ログアウト</a>
+          </li>
+        {% else %}
+          <li class="head-sub-menu">
+            <a href="{{ routes.account_login_url }}">ログイン</a>
+          </li>
+          <li class="head-sub-menu">
+            <a href="{{ routes.account_register_url }}">新規アカウント登録</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    
+    <div class="head-icons">
+      <a href="#" class="cart-icon{% if cart.item_count > 0 %} in-cart{% endif %}">
+        <svg class="icon" aria-hidden="true" focusable="false">
+            <use href="#icon-cart">
+        </svg>
+        <div class="in-cart-check">
+          <span></span><span></span>
+        </div>
+      </a>
+    </div>
+    
+
+  </div>
+</header>
+
+<div id="head-space" class="head-space"></div>
+
+
+<section class="cart-area">
+  {% form 'cart', cart %}
+    <div class="cart-head">
+    <p>カート</p>
+    <div class="cart-notify"></div>
+    <a href="#" class="cart-close"><span></span><span></span></a>
+    </div>
+
+    <div class="cart-items">
+      {% if cart.item_count > 0 %}
+        <ul>
+          {% for item in cart.items %}
+            <li class="cart-item">
+              <input type="hidden" class="item-id" value="{{ item.id }}">
+              <div class="cart-image">
+                <a href="{{ item.url | within: collections.all }}">
+                  <img src="{{ item | img_url: 'x150' }}" alt="{{ item.title | escape }}">
+                </a>
+              </div>
+              <div class="cart-desc">
+                <p class="item-name"><a href="{{ item.url | within: collections.all }}">{{ item.product.title }}</a></p>
+                {% for option in item.options_with_values %}
+                  {% if option.value != 'Default Title' %}
+                    <p class="item-varie">{{ option.name }}:<span>{{ option.value }}</span></p>
+                  {% endif %}
+                {% endfor %}
+                <p class="item-price">{{ item.price | money }}</p>
+                <div class="item-qty">
+                  <span>数量:</span>
+                  <select class="item-selct-qty">
+                    {% for i in (1..10) %}
+                      <option value="{{ i }}"{%- if i == item.quantity -%}selected{%- endif -%}>{{ i }}</option>
+                      {%- if i == item.variant.inventory_quantity -%}{% break %}{% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <a href="#" class="item-delete"><span></span><span></span></a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+      <ul><li class="cart-blank">カートは空です</li></ul>
+      {% endif %}
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <div class="cart-checkout">
+        <div class="cart-subtotal">
+          <p>小計</p>
+          <p class="cart-subtotal-price">{{ cart.total_price | money }}</p>
+        </div>
+        <div class="cart-sub-text">送料、税金、割引コードは購入ページで計算されます</div>
+        <div class="cart-check-btn"><button name="checkout"><span>購入ページへ</span></button></div>
+      </div>
+    {% endif %}
+  {% endform %}
+</section>
+
+
+
+
+{% schema %}
+{
+    "name": "header",
+    "settings": [
+        {
+        "id": "head-logo",
+        "type": "image_picker",
+        "label": "ブランドロゴ"
+    },
+    {
+      "id": "cart_check",
+      "type": "color",
+      "label": "カートに商品があるときのチェックアイコンカラー",
+      "default": "#3FB312"
+    },
+    {
+      "id": "cart_check_mark",
+      "type": "color",
+      "label": "チェックマークのカラー",
+      "default": "#ffffff"
+    }
+    ],
+    "presets":[
+        {
+        "name": "main-image"
+        }
+    ]
+}
+{% endschema %}
+
+
+{% endcomment %}

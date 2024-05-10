@@ -1,0 +1,66 @@
+
+{% if section.settings.main-collection.products %}
+{%  assign products = section.settings.main-collection.products %}
+{% assign title = section.settings.main-collection.title %}
+{% assign url = section.settings.main-collection.url %}
+{% else %}
+{% assign products = collections['restock-item'].products %}
+{% assign title = collections['restock-item'].title %}
+{% assign url = collections['restock-item'].url %}
+{% endif %}
+
+{% if products.length %}
+<section class="main-collection-list delighter" data-delighter>
+    <div class="main-collection-title">
+        <p>{{ title }}</p>
+    </div>
+
+    <div>
+        <div class="swiper-container item_swiper">
+            <ul class="collection-slider swiper-wrapper">
+                {% for item in products %}
+                    <li class="swiper-slide">
+                        <a href="{{ item.url }}">
+                            <div class="m-c-slider-image">
+                                {% for img in item.images %}
+                                {% if forloop.index <= 2 %}
+                                    <img src="{{ img  | img_url: 'large' }}">
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="main-collection-context">
+                                <p class="slide-text-title">{{ item.title }}</p>
+                                <p class="slide-text-price">{{ item.price | money }}</p>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-collection-link">
+        <a href="{{ url }}">VIEW ALL</a>
+    </div>
+</section>
+{% endif %}
+
+
+
+{% schema %}
+{
+    "name": "restock-item-slider",
+    "settings": [
+        {
+        "id": "restock-item",
+        "type": "collection",
+        "label": "コレクション"
+    }
+    ],
+    "presets":[
+        {
+        "name": "restock-item-slider"
+        }
+    ]
+}
+{% endschema %}

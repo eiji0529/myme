@@ -1,0 +1,22 @@
+
+
+{{ 'css_about.css' | asset_url | stylesheet_tag }}
+
+
+<div class="circle-design">
+    <div class="circle-img"><img src="{{ 'circle-white.png' | asset_img_url: '900x900' }}" alt=""></div>
+</div>
+
+<div class="bland-logo">
+    <img src="{{ 'brandlogo.png' | asset_img_url: '150x' }}" alt="{{ shop.name }}">
+</div>
+
+<div class="page-content">
+    <h3 class="page-title">
+        {{ page.title }}
+    </h3>
+
+    <p class="page-text">
+        {{ page.content }}
+    </p>
+</div>

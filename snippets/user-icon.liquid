@@ -1,0 +1,47 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+    <symbol id="icon-user" viewBox="0 0 25 25">
+        <path d="
+      M 19 7 c 0 3.36 -2.727 6.084 -6.083 6.084 c -3.362 0 -6.086 -2.724 -6.086 -6.084 c 0 -3.361 2.724 -6.085 6.086 -6.085 C 16.36 1 19 3.724 19 7 z"/>
+        <path d="
+      M 23 24 c 0 -4 -4.195 -8.791 -10.009 -8.791 c -5.805 0 -9.991 4.791 -9.991 8.791 H 23.009 z"/>
+    </symbol>
+</svg>
+
+
+
+{% if customer %}
+    <div class="account-btn head-main-menu">
+        <a href="{{ routes.account_url }}" class="account-link">
+          <svg class="icon" aria-hidden="true" focusable="false">
+              <use href="#icon-user">
+          </svg>
+        </a>
+        
+        <ul class="user-menu head-sub-menu-list">
+            <li class="head-sub-menu">
+              <a href="{{ routes.account_url }}">{{ 'general.user.mypage' | t }}</a>
+            </li>
+            <li class="head-sub-menu">
+              <a href="{{ routes.account_logout_url }}">{{ 'general.user.logout' | t }}</a>
+            </li>
+        </ul>
+    </div>
+  {% else %}
+    <div class="account-btn head-main-menu">
+        <a href="{{ routes.account_login_url }}" class="account-link">
+          <svg class="icon" aria-hidden="true" focusable="false">
+              <use href="#icon-user">
+          </svg>
+        </a>
+        
+        <ul class="user-menu head-sub-menu-list">
+            <li class="head-sub-menu">
+              <a href="{{ routes.account_login_url }}">{{ 'general.user.login' | t }}</a>
+            </li>
+            <li class="head-sub-menu">
+              <a href="{{ routes.account_register_url }}">{{ 'general.user.register' | t }}</a>
+            </li>
+        </ul>
+    </div>
+  {% endif %}

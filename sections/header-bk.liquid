@@ -1,0 +1,112 @@
+
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+  <symbol id="icon-user" viewBox="0 0 18 18">
+	<path class="st0" d="M9,0.898c-2.233,0-4.05,1.818-4.05,4.053c0,2.233,1.816,4.051,4.05,4.051c2.234,0,4.052-1.817,4.052-4.051
+		C13.052,2.717,11.234,0.898,9,0.898z M9,9.901c-2.73,0-4.951-2.221-4.951-4.95C4.049,2.22,6.27-0.001,9-0.001
+		s4.951,2.221,4.951,4.952C13.951,7.681,11.73,9.901,9,9.901z"/>
+	<path class="st0" d="M9,11.701c-3.139,0-5.454,0.859-6.698,2.481c-0.933,1.217-0.953,2.461-0.953,2.471
+		c0,0.248,0.202,0.449,0.451,0.449h14.402c0.248,0,0.45-0.201,0.45-0.451c0-0.008-0.021-1.252-0.953-2.469
+		C14.455,12.561,12.14,11.701,9,11.701z M16.202,18.001H1.8c-0.746,0-1.352-0.604-1.352-1.35c0-0.061,0.013-1.516,1.103-2.97
+		c0.634-0.846,1.503-1.518,2.583-1.996C5.452,11.099,7.089,10.802,9,10.802s3.549,0.297,4.866,0.884
+		c1.08,0.479,1.949,1.15,2.584,1.996c1.091,1.454,1.102,2.909,1.102,2.97C17.552,17.397,16.946,18.001,16.202,18.001z"/>
+  </symbol>
+</svg>
+
+
+<header id="header">
+  <div class="nav-menu">
+    <!-- ハンバーガーメニュー -->
+    <a class="menu-trigger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+
+    {% assign sub_mnum = 1 %}
+
+    <div id="head-nav">
+      <ul class="hbar">
+        {% for link in linklists.main-menu.links %}
+          {% assign sub_list_handle = link.title | handleize %}
+          {% if linklists[sub_list_handle].links != blank %}
+            <li class="mbar">
+              <div class="m-title"><span>{{ link.title }}</span></div>
+              <!-- サブフォルダ -->
+              <ul class="sub-menu">
+                {% for childlink in linklists[sub_list_handle].links %}
+                  <li class="sub-mbar">
+                    <div class="sub-menu-title">{{ childlink.title | link_to: childlink.url }}</div>
+                    {% assign sub_sub_list_handle = childlink.title | handleize %}
+                    {% if linklists[sub_sub_list_handle].links != blank %}
+                      {% for grandchildlink in linklists[sub_sub_list_handle].links %}
+                        <div class="sub-sub-menu">
+                          <a href="{{ grandchildlink.url }}">> {{ grandchildlink.title }}</a>
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% else %}
+          <li class="mbar">
+              <div class="m-title">
+                <a href="{{ link.url }}">
+                  <div>{{ link.title }}</div>
+                </a>
+              </div>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="shop-name">
+    <a href="{{ routes.root_url }}">
+      <img src="{{ 'brandlogo.png' | asset_img_url: '110x' }}" alt="{{ shop.name }}">
+    </a>
+  </div>
+
+
+  <div class="head-icons">
+    <div class="head-icon">
+      {% render 'search-box' %}
+    </div>
+    <div class="head-icon">
+      {% render 'cart-icon' %}
+    </div>
+    <div class="head-icon sign-btn">
+      {% if customer %}
+        <div class="customer-icons">
+          <div class="user-icon">
+            <a href="{{ routes.account_url }}" class="account-link">
+              <svg class="icon" aria-hidden="true" focusable="false">
+                  <use href="#icon-user">
+              </svg>
+            </a>
+          </div>
+          <div class="account-btn">{{ 'log out ' | customer_logout_link }}</div>
+        </div>
+      {% else %}
+      <div class="account-btn"><span>{{ 'log in ' | customer_login_link }}</span></div>
+      {% endif %}
+    </div>
+    
+    <div class="head-icon language-switcher">
+      {% render 'select-language' %}
+    </div>
+
+  </div>
+
+  <div class="head-icon sp-language-switcher">
+    {% render 'sp-select-language' %}
+  </div>
+</header>

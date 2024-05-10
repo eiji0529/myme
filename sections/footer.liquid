@@ -4,7 +4,7 @@
 <footer id="footer">
   <div class="footer-area">
     <div class="inf-links">
-      <div>Influencers</div>
+      {% comment %}<div>Influencers</div>{% endcomment %}
       <ul class="foot-infs">
         {% for coll in linklists.footer-sns.links %}
           {% assign sub_list_handle = coll.title | handleize %}
@@ -43,7 +43,9 @@
         </div>
       {% endfor %}
     </div>
+    {% comment %}
     <div class="footer-company">{{ 'footer.company-name' | t }}</div>
+    {% endcomment %}
   </div>
 </footer>
 

@@ -1,8 +1,10 @@
 {{ 'css_lookbook-product.css' | asset_url | stylesheet_tag }}
 
 <section id="lookbook-product-page">
-    <img src="{{ 'brandlogo.png' | asset_img_url: '110x' }}" alt="{{ shop.name }}" id="mumu-img">
+    {% comment %}
+    <img src="{{ 'brandlogo.png' | asset_img_url: 'original' }}" alt="{{ shop.name }}" id="mumu-img">
     <p>{{ '2024 SS collection' }}</p>
+    {% endcomment %}
     <div class="lookbook-product-area" id="lookbook-product"> 
         <div class="look" id="lookbook1">
             <div class="lookbook1-left" id="lookbook-1">

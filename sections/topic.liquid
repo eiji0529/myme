@@ -1,0 +1,63 @@
+
+
+{% if section.settings.blog_type == "" %}
+    {% assign blog = blogs.topic %}
+{% elsif section.settings.blog_type %}
+    {% assign blog = section.settings.blog_type %}
+{% else %}
+    {% assign blog = blogs.topic %}
+{% endif %}
+
+{% assign limit = section.settings.topic_limit %}
+
+{% if blog %}
+    <div class="topic-area delighter" data-delighter>
+        {% for topic in blog.articles limit:limit %}
+            <div class="topics">
+                <div class="topic-img">
+                    {% if topic.image.src %}
+                    <img class="lazyload" data-original="{{ topic.image.src | img_url: 'medium' }}">
+                    {% endif %}
+                </div>
+    
+                <div class="topic-contents">
+                    <p class="topic-date">
+                        {{ topic.updated_at | date: '%Y/%m/%d' }}
+                    </p>
+                    <p class="topic-title">
+                        {{ topic.title }}
+                    </p>
+                    <p>
+                        {{ topic.content }}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+
+{% schema %}
+{
+    "name": "topic",
+    "settings": [
+        {
+        "id": "topic_limit",
+        "type": "number",
+        "label": "トピック数",
+        "default": 2
+    },
+        {
+        "id": "blog_type",
+        "type": "blog",
+        "label": "ブログの種類"
+    }
+    ],
+    "presets":[
+        {
+        "name": "topic"
+        }
+    ]
+}
+{% endschema %}

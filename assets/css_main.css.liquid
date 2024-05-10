@@ -2,9 +2,11 @@
 /* Note: "@import" rules aren’t supported. */
 
 :root {
+    --main-logo-height: calc(100vh - var(--header-height));
 
     --white: #fafafa;
     --black: #333333;
+    --base-color: linear-gradient(to right, #bca7c3, #c799b1);
     --base-gray: #4D4D4D;
     --dark-gray: #323232;
     --pink: #caabc6;
@@ -12,11 +14,18 @@
 
     --footer-height: 0px;
     --header-height: 60px;
-
     --h1-font-size: 21px;
     --head-font-size: 16px;
-    --base-font-size: 15px;
+    --midlarge-font-size: 15px;
+    --base-font-size: 14px;
     --small-font-size: 13px;
+
+    --base-border-color: #323232;
+    --middle-border-color: #888;
+
+    --header-height: 50px;
+    --sp-menu-padding: 2em;
+    --sp-menu-width: calc(101vw - var(--sp-menu-padding) * 2);
 }
 
 
@@ -34,7 +43,7 @@ html {
 body {
     padding: 0;
     margin: 0;
-    background-color: var(--base-gray);
+    background: var(--base-color);
     position: relative;
 }
 
@@ -101,9 +110,9 @@ h1 {
     cursor: pointer;
     width: fit-content;
     position: relative;
-    border: 1px solid var(--white);
+    border: 1px solid var(--dark-gray);;
     border-radius: 5px;
-    color: var(--white);
+    color: var(--dark-gray);;
     padding: 1px 5px;
     display: flex;
     justify-content: center;
@@ -146,7 +155,6 @@ h1 {
         display: none;
     }
 }
-
 @media screen and (max-width:900px) {
     .lang-selecter {
         width: 45px;
@@ -427,4 +435,192 @@ h1 {
     top: 50%;
     left: 0;
     transform: translateY(-50%);
+}
+
+
+
+
+
+
+
+/* main-collection-list用 */
+.item_swiper {
+    overflow: hidden;
+}
+.swiper-wrapper {
+    transition-timing-function: linear;
+}
+.swiper-slide {
+    padding: 1px;
+}
+.main-collection-list {
+    margin-bottom: 80px;
+}
+.main-collection-title {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    margin: 30px 0;
+}
+.main-collection-title p {
+    margin: auto;
+    padding: 0;
+    font-weight: bold;
+    font-size: large;
+    color: var(--white);
+}
+.main-collection-context {
+    padding-top: 1em;
+    /*border: 1px solid var(--base-border-color);
+    border-top: none;
+    */
+}
+.slide-text-title,
+.slide-text-price {
+    text-align: center;
+}
+.slide-text-title{
+    margin-top: 0;
+    margin-bottom: 0.4em;
+}
+.slide-text-price{
+    margin-top: 0.4em;
+    margin-bottom: 1em;
+}
+.m-c-slider-image {
+    position: relative;
+    height: 0;
+    padding-top: 120%;
+    overflow: hidden;
+}
+/* ホバーで２枚目を見せるのはPCのみ */
+@media screen and (min-width:901px) {
+.m-c-slider-image:hover img:first-child{
+    opacity: 0;
+}
+}
+/*----------*/
+.collection-slider img:last-child {
+    z-index: -1;
+}
+.collection-slider img {
+    position: absolute;
+    height: 100%;
+    transition: 0.2s;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.main-collection-link {
+    display: flex;
+}
+.main-collection-link a {
+    margin: auto;
+    border: 1px solid var(--base-border-color);
+    padding: 0.7em 2em;
+    margin-top: 30px;
+    transition: 0.3s;
+}
+.main-collection-link a:hover {
+    background-color: #eaeaea;
+}
+/* swiperの矢印 */
+.swiper-container {
+    position: relative;
+}
+.swiper-arrow {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    z-index: 100;
+    transform: translateY(-50%);
+    svg {
+        transition: 0.4s;
+        width: 90%;
+        max-width: 20px;
+        height: 90%;
+        margin: auto;
+        fill-opacity: 0.2;
+    }
+    .swiper-button {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: 25px;
+        background: rgba(35,35,35,0.1);
+        transition: 0.4s;
+    }
+    .swiper-button:hover {
+        background: rgba(35,35,35,0.7);
+        opacity: 0.4;
+        svg {
+            fill: var(--white);
+            stroke: var(--white);
+            fill-opacity: 0.7;
+            stroke-opacity: 0.7;
+        }
+    }
+    .swiper-prev {
+        display: flex;
+        left: 0;
+        transform: rotate(180deg) translateY(50%);
+    }
+    .swiper-next {
+        display: flex;
+        right: 0;
+        transform: translateY(-50%);
+    }
+}
+
+
+
+
+/* topic用 */
+@media screen and (min-width:901px) {
+    .topic-area {
+        margin: 40px 15vw;
+        .topics {
+            display: flex;
+            .topic-img {
+                width: 240px;
+                img {
+                    width: 100%;
+                }
+            }
+            .topic-contents {
+                margin-left: 2.5em;
+                .topic-title {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:900px) {
+    .topic-area {
+        width: 100svw;
+        margin: 40px 0;
+        .topics {
+            display: flex;
+            margin: 1.4em 0;
+            .topic-img {
+                width: 40%;
+                min-width: 40%;
+                img {
+                    width: 100%;
+                }
+            }
+            .topic-contents {
+                margin-left: 1em;
+                p {
+                    margin: 0;
+                }
+                .topic-title {
+                    font-weight: bold;
+                    margin: 0.5em 0;
+                }
+            }
+        }
+    }
 }

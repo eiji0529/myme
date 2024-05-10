@@ -1,0 +1,86 @@
+
+{% if section.settings.main-collection.products %}
+{% assign products = section.settings.main-collection.products %}
+{% assign title = section.settings.main-collection.title %}
+{% assign url = section.settings.main-collection.url %}
+{% else %}
+{% assign products = collections['new-item'].products %}
+{% assign title = collections['new-item'].title %}
+{% assign url = collections['new-item'].url %}
+{% endif %}
+
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+    <symbol id="icon-arrow" viewBox="0 0 12 30">
+        <path d="M 2 0 L 0 1 L 9 15 L 0 29 L 2 30 L 12 15 Z"></path>
+    </symbol>
+</svg>
+
+
+{% if products.length %}
+<section class="main-collection-list delighter" data-delighter>
+    <div class="main-collection-title">
+        <p>{{ title }}</p>
+    </div>
+
+    <div>
+        <div class="swiper-container item_swiper">
+            <ul class="collection-slider swiper-wrapper">
+                {% for item in products %}
+                    <li class="swiper-slide">
+                        <a href="{{ item.url }}">
+                            <div class="m-c-slider-image">
+                                {% for img in item.images %}
+                                {% if forloop.index <= 2 %}
+                                    <img src="{{ img  | img_url: 'large' }}">
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="main-collection-context">
+                                <p class="slide-text-title">{{ item.title }}</p>
+                                <p class="slide-text-price">{{ item.price | money }}</p>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="swiper-arrow">
+                <div class="swiper-button swiper-prev">
+                    <svg aria-hidden="true" focusable="false">
+                        <use href="#icon-arrow">
+                    </svg>
+                </div>
+                <div class="swiper-button swiper-next">
+                    <svg aria-hidden="true" focusable="false">
+                        <use href="#icon-arrow">
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-collection-link">
+        <a href="{{ url }}">VIEW ALL</a>
+    </div>
+</section>
+{% endif %}
+
+
+
+
+{% schema %}
+{
+    "name": "new-item-slider",
+    "settings": [
+        {
+        "id": "main-collection",
+        "type": "collection",
+        "label": "コレクション"
+    }
+    ],
+    "presets":[
+        {
+        "name": "new-item-slider"
+        }
+    ]
+}
+{% endschema %}

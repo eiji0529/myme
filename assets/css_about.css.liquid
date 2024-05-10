@@ -1,0 +1,61 @@
+
+
+
+
+.circle-design {
+    display: flex;
+    height: var(--main-logo-height);
+    justify-content: center;
+    align-items: center;
+}
+.circle-design img {
+    height: 100%;
+    width: 100%;
+}
+@media screen and (min-width:901px) {
+    .circle-img {
+        margin: auto;
+        height: 80vh;
+    }
+}
+@media screen and (max-width:900px) {
+    .circle-img {
+        margin: auto;
+        width: 80%;
+    }
+}
+
+.bland-logo {
+    text-align: center;
+    @media screen and (min-width:901px) {
+        margin-bottom: 120px;
+    }
+    @media screen and (max-width:900px) {
+        margin-bottom: 80px;
+    }
+}
+
+.page-content {
+    margin-bottom: 160px;
+    text-align: center;
+    color: var(--white);
+    .page-title {
+        font-size: X-large;
+    }
+    @media screen and (min-width:901px) {
+        .page-title {
+            margin: 60px 0 60px 0;
+        }
+        .page-text {
+            line-height: 3.8em;
+            letter-spacing: 0.1em;
+            font-size: larger;
+        }
+    }
+    @media screen and (max-width:900px) {
+        .page-text {
+            line-height: 3.2em;
+            letter-spacing: 0.1em;
+        }
+    }
+}

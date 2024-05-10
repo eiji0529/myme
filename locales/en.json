@@ -17,7 +17,14 @@
     },
     "overseas_notice": {
       "title": "Overseas Shipping Notice",
-      "content": "Customers are responsible for any customs duties and fees incurred by international shipments. Please be aware that you may be required to pay customs duties at the time of shipment."
+      "content": "Customers are responsible for any customs duties and fees incurred by international shipments. Please be aware that you may be required to pay customs duties at the time of shipment.",
+      "next_stop": "Don't show again."
+    },
+    "user": {
+      "login": "Log in",
+      "logout": "Log out",
+      "register": "Sign Up",
+      "mypage": "My account page"
     }
   },
   "localization": {
